@@ -1,0 +1,543 @@
+openapi: 3.1.0
+info:
+  title: Allegory Funders API
+  version: 1.0.0
+  description: |
+    Public API for searching nonprofit funders and grant history data.
+    
+    This API provides fast, edge-cached access to nonprofit funder information
+    and their grant-making history from IRS 990 filings.
+    
+    **Base URL:** `https://allegory-middleware.workers.dev`
+    
+    **Rate Limits:** 100 requests per minute per IP address
+    
+    **Data Freshness:** Data is synced daily from our analytics warehouse at 4am UTC
+  contact:
+    name: Allegory API Support
+    url: https://allegory.dev
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://allegory-middleware.workers.dev
+    description: Production server
+
+tags:
+  - name: Funders
+    description: Search and retrieve nonprofit funder information
+  - name: Grant History
+    description: Access grant-making history from IRS 990 filings
+
+paths:
+  /v1/funders:
+    get:
+      tags:
+        - Funders
+      summary: Search funders
+      description: |
+        Search nonprofit funders with filters and pagination.
+        
+        **Performance:** ~50-100ms response time (D1 edge database)
+      operationId: searchFunders
+      parameters:
+        - name: name
+          in: query
+          description: Search by funder name (partial match, case-insensitive)
+          required: false
+          schema:
+            type: string
+          example: American Red Cross
+        - name: country
+          in: query
+          description: Filter by country (partial match)
+          required: false
+          schema:
+            type: string
+          example: United States
+        - name: type
+          in: query
+          description: Filter by organization type
+          required: false
+          schema:
+            type: string
+            enum:
+              - venture
+              - foundations
+              - government
+          example: foundations
+        - name: focus_areas
+          in: query
+          description: Filter by focus area (exact match, lowercase)
+          required: false
+          schema:
+            type: string
+          example: human services
+        - name: status
+          in: query
+          description: Filter by verification status
+          required: false
+          schema:
+            type: string
+            enum:
+              - unverified
+              - verified
+              - active
+          example: verified
+        - name: limit
+          in: query
+          description: Number of results per page
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+        - name: offset
+          in: query
+          description: Offset for pagination
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        '200':
+          description: Successful search results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Funder'
+                  total:
+                    type: integer
+                    description: Total number of matching results
+                    example: 150
+                  limit:
+                    type: integer
+                    example: 20
+                  offset:
+                    type: integer
+                    example: 0
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /v1/funders/{ein}:
+    get:
+      tags:
+        - Funders
+      summary: Get a funder by EIN
+      description: |
+        Retrieve detailed information about a nonprofit funder by their EIN.
+        
+        **Performance:** ~10-50ms response time (D1 edge database)
+      operationId: getFunder
+      parameters:
+        - name: ein
+          in: path
+          description: The funder's EIN (Employer Identification Number)
+          required: true
+          schema:
+            type: string
+          example: '131635294'
+      responses:
+        '200':
+          description: Funder details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: '#/components/schemas/Funder'
+        '404':
+          description: Funder not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: Funder not found
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /v1/funders/{ein}/history:
+    get:
+      tags:
+        - Grant History
+      summary: Get grant history for a funder
+      description: |
+        Retrieve the grant-making history (from IRS 990 filings) for a specific funder.
+        
+        **Performance:** ~50-100ms response time (D1 edge database)
+      operationId: getFunderHistory
+      parameters:
+        - name: ein
+          in: path
+          description: The funder's EIN (Employer Identification Number)
+          required: true
+          schema:
+            type: string
+          example: '131635294'
+        - name: limit
+          in: query
+          description: Number of results per page
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 1000
+            default: 100
+        - name: offset
+          in: query
+          description: Offset for pagination
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        '200':
+          description: Grant history for the funder
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/GrantRecord'
+                  total:
+                    type: integer
+                    description: Total number of grants
+                    example: 450
+                  limit:
+                    type: integer
+                    example: 100
+                  offset:
+                    type: integer
+                    example: 0
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /v1/history:
+    get:
+      tags:
+        - Grant History
+      summary: Search all grant history
+      description: |
+        Search all grant history records with filters.
+        
+        **Performance:** ~50-200ms response time (D1 edge database)
+      operationId: searchFunderHistory
+      parameters:
+        - name: funder_ein
+          in: query
+          description: Filter by funder EIN (exact match)
+          required: false
+          schema:
+            type: string
+          example: '131635294'
+        - name: recipient_ein
+          in: query
+          description: Filter by recipient EIN (exact match)
+          required: false
+          schema:
+            type: string
+          example: '123456789'
+        - name: transaction_year
+          in: query
+          description: Filter by transaction year (exact match)
+          required: false
+          schema:
+            type: integer
+          example: 2022
+        - name: purpose
+          in: query
+          description: Search by grant purpose (partial match)
+          required: false
+          schema:
+            type: string
+          example: education
+        - name: min_amount
+          in: query
+          description: Filter by minimum grant amount
+          required: false
+          schema:
+            type: integer
+          example: 10000
+        - name: limit
+          in: query
+          description: Number of results per page
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 1000
+            default: 100
+        - name: offset
+          in: query
+          description: Offset for pagination
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        '200':
+          description: Successful search results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/GrantRecord'
+                  total:
+                    type: integer
+                    description: Total number of matching grants
+                    example: 2500
+                  limit:
+                    type: integer
+                    example: 100
+                  offset:
+                    type: integer
+                    example: 0
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  schemas:
+    Funder:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the funder
+          example: 550e8400-e29b-41d4-a716-446655440000
+        name:
+          type: string
+          description: Organization name
+          example: American Red Cross
+        ein:
+          type: string
+          description: Employer Identification Number
+          example: '131635294'
+        description:
+          type: string
+          nullable: true
+          description: Organization mission/description
+          example: Provides emergency assistance, disaster relief, and education
+        website_url:
+          type: string
+          format: uri
+          nullable: true
+          description: Organization website
+          example: https://www.redcross.org
+        logo_url:
+          type: string
+          format: uri
+          nullable: true
+          description: Organization logo URL
+          example: https://logo.clearbit.com/redcross.org
+        charity_navigator_url:
+          type: string
+          format: uri
+          nullable: true
+          description: Charity Navigator profile URL
+          example: https://www.charitynavigator.org/ein/131635294
+        status:
+          type: string
+          enum:
+            - unverified
+            - verified
+            - active
+          description: Verification status
+          example: verified
+        type:
+          type: string
+          enum:
+            - venture
+            - foundations
+            - government
+          nullable: true
+          description: Organization type
+          example: foundations
+        country:
+          type: string
+          nullable: true
+          description: Country of operation
+          example: United States
+        focus_areas:
+          type: string
+          nullable: true
+          description: Primary focus area (lowercase)
+          example: human services
+        linkedin_url:
+          type: string
+          format: uri
+          nullable: true
+          description: LinkedIn profile URL
+        x_url:
+          type: string
+          format: uri
+          nullable: true
+          description: X (Twitter) profile URL
+        bluesky_url:
+          type: string
+          format: uri
+          nullable: true
+          description: Bluesky profile URL
+        created_at:
+          type: string
+          format: date-time
+          description: Record creation timestamp
+          example: '2024-01-15T10:30:00Z'
+        updated_at:
+          type: string
+          format: date-time
+          description: Record last update timestamp
+          example: '2024-01-20T14:45:00Z'
+      required:
+        - id
+        - name
+        - ein
+        - status
+        - created_at
+        - updated_at
+
+    GrantRecord:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the grant record
+          example: 12345
+        funder_ein:
+          type: string
+          description: EIN of the funding organization
+          example: '131635294'
+        transaction_year:
+          type: integer
+          description: Year the grant was made
+          example: 2022
+        recipient_name:
+          type: string
+          description: Name of the grant recipient
+          example: Local Food Bank
+        recipient_ein:
+          type: string
+          description: EIN of the recipient organization
+          example: '123456789'
+        type:
+          type: string
+          nullable: true
+          description: Type of grant
+          example: Program Support
+        amount:
+          type: number
+          format: float
+          description: Grant amount in USD
+          example: 50000.00
+        non_cash_amount:
+          type: number
+          format: float
+          nullable: true
+          description: Non-cash portion of grant
+          example: 5000.00
+        non_cash_description:
+          type: string
+          nullable: true
+          description: Description of non-cash assistance
+          example: Medical supplies
+        purpose:
+          type: string
+          nullable: true
+          description: Purpose of the grant
+          example: Support food distribution programs
+        created_at:
+          type: string
+          format: date-time
+          description: Record creation timestamp
+          example: '2024-01-15T10:30:00Z'
+      required:
+        - id
+        - funder_ein
+        - transaction_year
+        - recipient_name
+        - recipient_ein
+        - amount
+        - created_at
+
+  responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              error:
+                type: string
+                example: Invalid parameters
+
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              error:
+                type: string
+                example: An unexpected error occurred
+
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: |
+        API key for authentication (optional for public endpoints, required for write operations).
+        
+        Contact support to obtain an API key for higher rate limits.
+
+security: []
