@@ -75,7 +75,7 @@
       }
     ]
   },
-  "logo": "/images/7372d4af-971f-46ea-aece-b0e8b9ae09f6.png",
+  "logo": "/images/3245ed16-f691-4628-8f7d-c97c2ddd3972.png",
   "navbar": {
     "links": [
       {
@@ -110,5 +110,8 @@
   },
   "api": {
     "baseUrl": "https://allegory-middleware.workers.dev"
+  },
+  "appearance": {
+    "strict": true
   }
 }
