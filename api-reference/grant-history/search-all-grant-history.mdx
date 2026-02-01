@@ -1,3 +1,90 @@
 ---
 openapi: api-reference/openapi.yaml get /v1/history
 ---
+
+Search across all grant history records with powerful filtering options. This endpoint allows you to find grants by funder, recipient, year, purpose, or amount across the entire database.
+
+## Use cases
+
+- Find all grants made to a specific organization
+- Search grants by purpose or focus area
+- Filter grants by year or amount
+- Analyze grant-making patterns across multiple funders
+
+## Filtering options
+
+You can combine multiple filters to narrow your search:
+
+- **Funder EIN**: Exact match - find all grants from a specific funder
+- **Recipient EIN**: Exact match - find all grants received by a specific organization
+- **Transaction Year**: Exact match - filter by year (e.g., `transaction_year=2022`)
+- **Purpose**: Partial match - search grant purposes (e.g., `purpose=education`)
+- **Minimum Amount**: Filter grants above a certain amount (e.g., `min_amount=10000`)
+
+<Tip>
+Combine `funder_ein` and `recipient_ein` to find specific grant relationships between organizations.
+</Tip>
+
+## Examples
+
+<RequestExample>
+```bash cURL
+# Find all grants to a specific organization
+curl -X GET 'https://allegory-middleware.workers.dev/v1/history?recipient_ein=123456789&limit=100' \
+  -H 'Accept: application/json'
+```
+</RequestExample>
+
+<RequestExample>
+```bash cURL
+# Find large grants in 2022
+curl -X GET 'https://allegory-middleware.workers.dev/v1/history?transaction_year=2022&min_amount=50000&limit=100' \
+  -H 'Accept: application/json'
+```
+</RequestExample>
+
+<RequestExample>
+```bash cURL
+# Search grants by purpose
+curl -X GET 'https://allegory-middleware.workers.dev/v1/history?purpose=education&limit=100' \
+  -H 'Accept: application/json'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Success Response
+{
+  "success": true,
+  "data": [
+    {
+      "id": 12345,
+      "funder_ein": "131635294",
+      "transaction_year": 2022,
+      "recipient_name": "Local Food Bank",
+      "recipient_ein": "123456789",
+      "type": "Program Support",
+      "amount": 50000.00,
+      "non_cash_amount": null,
+      "non_cash_description": null,
+      "purpose": "Support food distribution programs",
+      "created_at": "2024-01-15T10:30:00Z"
+    }
+  ],
+  "total": 2500,
+  "limit": 100,
+  "offset": 0
+}
+```
+</ResponseExample>
+
+## Pagination
+
+This endpoint supports pagination with a maximum of 1000 records per page:
+
+- **Default limit**: 100 grants per page
+- **Maximum limit**: 1000 grants per page
+- Use `offset` to navigate through pages
+
+<Warning>
+Large result sets may take longer to process. Use specific filters to narrow your search and improve response times.
+</Warning>

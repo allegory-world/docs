@@ -1,3 +1,62 @@
 ---
 openapi: api-reference/openapi.yaml get /v1/funders/{ein}
 ---
+
+Retrieve detailed information about a nonprofit funder by their Employer Identification Number (EIN). This endpoint provides direct lookup for a specific funder.
+
+## EIN format
+
+The EIN (Employer Identification Number) is a 9-digit number assigned by the IRS. You can find EINs on:
+- IRS Form 990 filings
+- Charity Navigator profiles
+- Organization websites (often in their footer or About page)
+
+<Warning>
+EINs must be provided as strings, not numbers, to preserve leading zeros. For example, use `"012345678"` not `12345678`.
+</Warning>
+
+## Examples
+
+<RequestExample>
+```bash cURL
+curl -X GET 'https://allegory-middleware.workers.dev/v1/funders/131635294' \
+  -H 'Accept: application/json'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Success Response
+{
+  "success": true,
+  "data": {
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "name": "American Red Cross",
+    "ein": "131635294",
+    "description": "Provides emergency assistance, disaster relief, and education",
+    "website_url": "https://www.redcross.org",
+    "logo_url": "https://logo.clearbit.com/redcross.org",
+    "charity_navigator_url": "https://www.charitynavigator.org/ein/131635294",
+    "status": "verified",
+    "type": "foundations",
+    "country": "United States",
+    "focus_areas": "human services",
+    "linkedin_url": "https://linkedin.com/company/american-red-cross",
+    "created_at": "2024-01-15T10:30:00Z",
+    "updated_at": "2024-01-20T14:45:00Z"
+  }
+}
+```
+</ResponseExample>
+
+<ResponseExample>
+```json Not Found Response
+{
+  "success": false,
+  "error": "Funder not found"
+}
+```
+</ResponseExample>
+
+<Tip>
+After retrieving a funder by EIN, you can use the same EIN to fetch their grant history using the `/v1/funders/{ein}/history` endpoint.
+</Tip>

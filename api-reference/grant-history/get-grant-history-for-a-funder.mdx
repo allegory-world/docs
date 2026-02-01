@@ -1,3 +1,64 @@
 ---
 openapi: api-reference/openapi.yaml get /v1/funders/{ein}/history
 ---
+
+Retrieve the grant-making history for a specific funder from IRS 990 filings. This endpoint provides access to historical grant data showing who the funder has supported and how much they've given.
+
+## Data source
+
+Grant history data is extracted from IRS Form 990 filings, which nonprofits are required to file annually. The data includes:
+- Grant recipients and their EINs
+- Grant amounts (cash and non-cash)
+- Grant purposes and descriptions
+- Transaction years
+
+<Info>
+**Data Freshness:** Grant history is synced daily from our analytics warehouse at 4am UTC. New 990 filings are typically available within 24-48 hours of being filed with the IRS.
+</Info>
+
+## Examples
+
+<RequestExample>
+```bash cURL
+curl -X GET 'https://allegory-middleware.workers.dev/v1/funders/131635294/history?limit=100&offset=0' \
+  -H 'Accept: application/json'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Success Response
+{
+  "success": true,
+  "data": [
+    {
+      "id": 12345,
+      "funder_ein": "131635294",
+      "transaction_year": 2022,
+      "recipient_name": "Local Food Bank",
+      "recipient_ein": "123456789",
+      "type": "Program Support",
+      "amount": 50000.00,
+      "non_cash_amount": 5000.00,
+      "non_cash_description": "Medical supplies",
+      "purpose": "Support food distribution programs",
+      "created_at": "2024-01-15T10:30:00Z"
+    }
+  ],
+  "total": 450,
+  "limit": 100,
+  "offset": 0
+}
+```
+</ResponseExample>
+
+## Pagination
+
+This endpoint supports pagination with a maximum of 1000 records per page:
+
+- **Default limit**: 100 grants per page
+- **Maximum limit**: 1000 grants per page
+- Use `offset` to navigate through pages (e.g., page 2: `offset=100`)
+
+<Tip>
+For funders with extensive grant history, use the `limit` parameter to fetch larger pages (up to 1000) to reduce the number of API calls needed.
+</Tip>

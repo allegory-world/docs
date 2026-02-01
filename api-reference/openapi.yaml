@@ -38,8 +38,6 @@ paths:
       summary: Search funders
       description: |
         Search nonprofit funders with filters and pagination.
-        
-        **Performance:** ~50-100ms response time (D1 edge database)
       operationId: searchFunders
       parameters:
         - name: name
@@ -139,8 +137,6 @@ paths:
       summary: Get a funder by EIN
       description: |
         Retrieve detailed information about a nonprofit funder by their EIN.
-        
-        **Performance:** ~10-50ms response time (D1 edge database)
       operationId: getFunder
       parameters:
         - name: ein
@@ -186,8 +182,6 @@ paths:
       summary: Get grant history for a funder
       description: |
         Retrieve the grant-making history (from IRS 990 filings) for a specific funder.
-        
-        **Performance:** ~50-100ms response time (D1 edge database)
       operationId: getFunderHistory
       parameters:
         - name: ein
@@ -251,8 +245,6 @@ paths:
       summary: Search all grant history
       description: |
         Search all grant history records with filters.
-        
-        **Performance:** ~50-200ms response time (D1 edge database)
       operationId: searchFunderHistory
       parameters:
         - name: funder_ein
