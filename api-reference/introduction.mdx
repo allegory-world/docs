@@ -1,0 +1,72 @@
+---
+title: "API Introduction"
+description: "Get started with the Allegory Funders API"
+---
+
+Welcome to the Allegory Funders API documentation. This API provides fast, edge-cached access to nonprofit funder information and their grant-making history from IRS 990 filings.
+
+## Base URL
+
+All API requests should be made to:
+
+```
+https://allegory-middleware.workers.dev
+```
+
+## Rate Limits
+
+The API has a rate limit of **100 requests per minute** per IP address.
+
+## Data Freshness
+
+Data is synced daily from our analytics warehouse at **4am UTC**.
+
+## Authentication
+
+<Info>
+API key authentication is optional for public endpoints but required for write operations and higher rate limits.
+</Info>
+
+To use API key authentication, include your API key in the request header:
+
+```
+X-API-Key: your_api_key_here
+```
+
+Contact [Allegory API Support](https://allegory.dev) to obtain an API key.
+
+## Response Format
+
+All API responses follow a consistent format:
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the request was successful
+</ResponseField>
+
+<ResponseField name="data" type="object | array">
+  The response data. Structure varies by endpoint.
+</ResponseField>
+
+<ResponseField name="error" type="string">
+  Error message (only present when success is false)
+</ResponseField>
+
+## Getting Started
+
+<Steps>
+<Step title="Explore the API endpoints">
+  Browse the endpoints in the sidebar to see available operations for searching funders and accessing grant history.
+</Step>
+
+<Step title="Try the API playground">
+  Use the interactive API playground on each endpoint page to test requests directly from your browser.
+</Step>
+
+<Step title="Review the data models">
+  Check the response schemas to understand the structure of returned data.
+</Step>
+</Steps>
+
+## Support
+
+For questions or support, contact [Allegory API Support](https://allegory.dev).

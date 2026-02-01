@@ -112,6 +112,6 @@
     }
   },
   "api": {
-    "openapi": "/openapi.yaml"
+    "baseUrl": "https://allegory-middleware.workers.dev"
   }
 }
