@@ -3,9 +3,9 @@
   "theme": "maple",
   "name": "Allegory API",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#B100FF",
+    "light": "#C133FF",
+    "dark": "#B100FF"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -75,10 +75,7 @@
       }
     ]
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
+  "logo": "/images/7372d4af-971f-46ea-aece-b0e8b9ae09f6.png",
   "navbar": {
     "links": [
       {
