@@ -56,6 +56,20 @@
             "pages": [
               "api-reference/introduction"
             ]
+          },
+          {
+            "group": "Funders",
+            "pages": [
+              "api-reference/funders/search-funders",
+              "api-reference/funders/get-a-funder-by-ein"
+            ]
+          },
+          {
+            "group": "Grant History",
+            "pages": [
+              "api-reference/grant-history/get-grant-history-for-a-funder",
+              "api-reference/grant-history/search-all-grant-history"
+            ]
           }
         ]
       }
