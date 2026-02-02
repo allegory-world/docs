@@ -111,11 +111,12 @@
     "baseUrl": "https://allegory-middleware.workers.dev"
   },
   "appearance": {
-    "strict": true
+    "strict": true,
+    "default": "light"
   },
   "background": {
     "color": {
-      "dark": "#727272"
+      "dark": "#212121"
     }
   }
 }
