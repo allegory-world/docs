@@ -1,0 +1,118 @@
+---
+title: "Allegory MCP Server"
+description: "Connect Claude Desktop to Allegory's funder database using the Model Context Protocol"
+icon: "brain"
+---
+
+## Overview
+
+The Allegory MCP (Model Context Protocol) Server enables Claude Desktop to directly access and search Allegory's nonprofit funder database. This allows Claude to answer questions about funders, grant history, and funding patterns without requiring manual API calls.
+
+## What is MCP?
+
+The Model Context Protocol (MCP) is an open protocol developed by Anthropic that enables AI assistants to connect to external data sources and tools. By installing the Allegory MCP Server, you give Claude the ability to:
+
+- Search for nonprofit funders by name, location, or focus area
+- Retrieve detailed funder information
+- Query grant history and funding patterns
+- Analyze giving trends across multiple funders
+
+## Installation
+
+<Note>
+  Full installation instructions coming soon. The Allegory MCP Server is currently in development.
+</Note>
+
+### Prerequisites
+
+- Claude Desktop application
+- Node.js 18 or higher
+- An Allegory API key (contact us at hello@allegory.world)
+
+### Quick Start
+
+```bash
+# Installation instructions will be added here
+npm install -g @allegory/mcp-server
+```
+
+## Configuration
+
+Configuration details for integrating with Claude Desktop will be provided once the MCP server is released.
+
+## Available Tools
+
+The Allegory MCP Server will provide the following tools to Claude:
+
+<AccordionGroup>
+  <Accordion title="search_funders">
+    Search for nonprofit funders with filters for name, country, type, focus areas, and verification status.
+  </Accordion>
+  
+  <Accordion title="get_funder">
+    Get detailed information about a specific funder by their EIN (Employer Identification Number).
+  </Accordion>
+  
+  <Accordion title="get_grant_history">
+    Retrieve grant-making history for a specific funder, including recipient organizations and grant amounts.
+  </Accordion>
+  
+  <Accordion title="search_all_grants">
+    Search across all grant records with filters for funder, recipient, year, purpose, and amount ranges.
+  </Accordion>
+</AccordionGroup>
+
+## Use Cases
+
+### Research & Analysis
+
+Ask Claude to analyze funding patterns:
+- "Which foundations focus on climate change in California?"
+- "What's the average grant size for education-focused funders?"
+- "Show me funders that support both arts and education"
+
+### Grant Writing
+
+Get insights for grant proposals:
+- "Find funders that have given to similar organizations"
+- "What's the typical grant range for this foundation?"
+- "When do they typically announce grants?"
+
+### Due Diligence
+
+Verify funder information:
+- "Is this foundation verified?"
+- "What's their giving history over the past 5 years?"
+- "Do they fund organizations in my region?"
+
+## Data Source
+
+All data comes from the Allegory API, which aggregates information from:
+- IRS 990 filings
+- Verified nonprofit databases
+- Public funding records
+
+Data is updated daily at 4am UTC.
+
+## Rate Limits
+
+The MCP server respects the same rate limits as the Allegory API:
+- 100 requests per minute per IP address
+- Authenticated requests may have higher limits
+
+## Support
+
+For questions or issues with the Allegory MCP Server:
+
+- Email: hello@allegory.world
+- Documentation: [API Reference](/api-reference/introduction)
+
+## Coming Soon
+
+We're actively developing the Allegory MCP Server. Stay tuned for:
+
+- ✨ Full installation guide
+- 📚 Detailed tool documentation
+- 🎯 Example prompts and workflows
+- 🔐 Authentication setup
+- 🚀 Advanced features and filters
