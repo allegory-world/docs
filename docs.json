@@ -112,5 +112,10 @@
   },
   "appearance": {
     "strict": true
+  },
+  "background": {
+    "color": {
+      "dark": "#727272"
+    }
   }
 }
