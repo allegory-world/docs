@@ -1,0 +1,94 @@
+---
+openapi: POST /v1/opportunities
+---
+
+Create a new funding opportunity for your organization. This endpoint allows you to add funding opportunities to track and manage.
+
+## Use cases
+
+- Add newly discovered funding opportunities
+- Import opportunities from external sources
+- Create opportunities for internal tracking
+- Set up opportunities with deadlines and amounts
+
+## Required fields
+
+Only the `Donor` field is required. All other fields are optional and can be added later.
+
+## Examples
+
+<RequestExample>
+```bash cURL
+curl -X POST 'https://allegory-middleware.ray-392.workers.dev/v1/opportunities' \
+  -H 'X-API-Key: YOUR_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "Donor": "Example Foundation",
+    "program_name": "Climate Action Grant",
+    "description": "Grants for climate change initiatives",
+    "funding_amount": 100000,
+    "funding_type": "private",
+    "status": "new",
+    "deadline": "2024-12-31T23:59:59Z",
+    "country": "United States",
+    "currency": "USD",
+    "source_url": "https://example.org/climate-grant"
+  }'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Success Response
+{
+  "success": true,
+  "data": {
+    "id": "7f3d9c1a-4b8e-4a2d-9f1c-8e6b5a3c2d1e",
+    "Donor": "Example Foundation",
+    "program_name": "Climate Action Grant",
+    "description": "Grants for climate change initiatives",
+    "funding_amount": 100000,
+    "funding_type": "private",
+    "status": "new",
+    "deadline": "2024-12-31T23:59:59Z",
+    "country": "United States",
+    "currency": "USD",
+    "source_url": "https://example.org/climate-grant",
+    "organization_id": "abc123-org-id",
+    "created_at": "2024-02-03T10:30:00Z",
+    "updated_at": "2024-02-03T10:30:00Z"
+  }
+}
+```
+</ResponseExample>
+
+## Optional fields
+
+<AccordionGroup>
+  <Accordion title="Basic Information">
+    - **program_name**: Name of the specific grant program
+    - **description**: Detailed description of the opportunity
+    - **source_url**: Link to the original opportunity posting
+  </Accordion>
+  
+  <Accordion title="Financial Details">
+    - **funding_amount**: Amount available (numeric)
+    - **currency**: Three-letter currency code (e.g., USD, EUR, GBP)
+    - **funding_type**: Type of funding (`public`, `private`, or `other`)
+  </Accordion>
+  
+  <Accordion title="Timeline & Status">
+    - **deadline**: Application deadline (ISO 8601 format)
+    - **status**: Current status (defaults to `new`)
+  </Accordion>
+  
+  <Accordion title="Additional Details">
+    - **country**: Country where the funder is located
+    - **markdown**: Rich text description in markdown format
+    - **form_content**: Application form content or requirements
+    - **assigned_to**: UUID of team member assigned to this opportunity
+  </Accordion>
+</AccordionGroup>
+
+<Info>
+The API automatically associates the opportunity with your organization based on your API key.
+</Info>

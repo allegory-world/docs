@@ -1,0 +1,65 @@
+---
+openapi: GET /v1/opportunities
+---
+
+List funding opportunities for your organization with powerful filtering options. This endpoint provides access to your organization-scoped funding opportunities.
+
+## Use cases
+
+- Browse all funding opportunities for your organization
+- Filter by donor, program name, or status
+- Search by funding type (public, private, or other)
+- Filter by country to find local opportunities
+- Paginate through large result sets
+
+## Examples
+
+<RequestExample>
+```bash cURL
+curl -X GET 'https://allegory-middleware.ray-392.workers.dev/v1/opportunities?funding_type=private&limit=20' \
+  -H 'X-API-Key: YOUR_API_KEY' \
+  -H 'Accept: application/json'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Success Response
+{
+  "success": true,
+  "data": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440000",
+      "Donor": "Example Foundation",
+      "program_name": "Education Grant Program",
+      "description": "Annual grants for educational initiatives",
+      "funding_amount": 50000,
+      "funding_type": "private",
+      "status": "active",
+      "deadline": "2024-12-31T23:59:59Z",
+      "country": "United States",
+      "currency": "USD",
+      "source_url": "https://example.org/grants",
+      "created_at": "2024-01-15T10:30:00Z",
+      "updated_at": "2024-01-20T14:45:00Z"
+    }
+  ],
+  "total": 42,
+  "limit": 20,
+  "offset": 0
+}
+```
+</ResponseExample>
+
+## Filtering options
+
+Combine multiple filters to narrow your search:
+
+- **Donor**: Partial match on donor name (e.g., `donor=Foundation`)
+- **Program Name**: Partial match on program name (e.g., `program_name=Education`)
+- **Status**: Filter by opportunity status (e.g., `status=active`)
+- **Funding Type**: Filter by type - `public`, `private`, or `other`
+- **Country**: Partial match on country (e.g., `country=United States`)
+
+<Tip>
+Use the `limit` parameter to control page size (1-100, default: 20) and `offset` for pagination.
+</Tip>

@@ -1,0 +1,84 @@
+---
+openapi: PUT /v1/opportunities/{id}
+---
+
+Update an existing funding opportunity by its UUID. You can update any field except the `id` and `organization_id`.
+
+## Use cases
+
+- Update opportunity status as you progress
+- Change deadlines or funding amounts
+- Add or modify descriptions and details
+- Assign opportunities to team members
+- Mark opportunities as completed or rejected
+
+## Examples
+
+<RequestExample>
+```bash cURL
+curl -X PUT 'https://allegory-middleware.ray-392.workers.dev/v1/opportunities/7f3d9c1a-4b8e-4a2d-9f1c-8e6b5a3c2d1e' \
+  -H 'X-API-Key: YOUR_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "status": "in_progress",
+    "assigned_to": "user-uuid-456",
+    "markdown": "# Updated Climate Grant\n\nAdditional research completed..."
+  }'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Success Response
+{
+  "success": true,
+  "data": {
+    "id": "7f3d9c1a-4b8e-4a2d-9f1c-8e6b5a3c2d1e",
+    "Donor": "Example Foundation",
+    "program_name": "Climate Action Grant",
+    "description": "Grants for climate change initiatives",
+    "funding_amount": 100000,
+    "funding_type": "private",
+    "status": "in_progress",
+    "deadline": "2024-12-31T23:59:59Z",
+    "country": "United States",
+    "currency": "USD",
+    "source_url": "https://example.org/climate-grant",
+    "markdown": "# Updated Climate Grant\n\nAdditional research completed...",
+    "assigned_to": "user-uuid-456",
+    "organization_id": "abc123-org-id",
+    "created_at": "2024-01-15T10:30:00Z",
+    "updated_at": "2024-02-03T14:20:00Z"
+  }
+}
+```
+</ResponseExample>
+
+## Partial updates
+
+You only need to include the fields you want to update. All other fields will remain unchanged.
+
+```json Example: Update only status
+{
+  "status": "submitted"
+}
+```
+
+## Common status values
+
+While you can use any string for status, common values include:
+
+- `new` - Newly discovered opportunity
+- `reviewing` - Under review by your team
+- `in_progress` - Actively working on application
+- `submitted` - Application submitted
+- `awarded` - Grant awarded
+- `rejected` - Application rejected
+- `closed` - Opportunity closed
+
+<Tip>
+The `updated_at` timestamp is automatically set to the current time when you update an opportunity.
+</Tip>
+
+<Warning>
+You can only update opportunities that belong to your organization. The `organization_id` cannot be changed.
+</Warning>

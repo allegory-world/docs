@@ -1,0 +1,66 @@
+---
+openapi: GET /v1/opportunities/{id}
+---
+
+Retrieve detailed information about a specific funding opportunity by its UUID.
+
+## Use cases
+
+- Get full details of a funding opportunity
+- Retrieve an opportunity for editing
+- Check current status and deadlines
+- Access all metadata for an opportunity
+
+## Examples
+
+<RequestExample>
+```bash cURL
+curl -X GET 'https://allegory-middleware.ray-392.workers.dev/v1/opportunities/7f3d9c1a-4b8e-4a2d-9f1c-8e6b5a3c2d1e' \
+  -H 'X-API-Key: YOUR_API_KEY' \
+  -H 'Accept: application/json'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Success Response
+{
+  "success": true,
+  "data": {
+    "id": "7f3d9c1a-4b8e-4a2d-9f1c-8e6b5a3c2d1e",
+    "Donor": "Example Foundation",
+    "program_name": "Climate Action Grant",
+    "description": "Grants for climate change initiatives",
+    "funding_amount": 100000,
+    "funding_type": "private",
+    "status": "active",
+    "deadline": "2024-12-31T23:59:59Z",
+    "country": "United States",
+    "currency": "USD",
+    "source_url": "https://example.org/climate-grant",
+    "markdown": "# Climate Action Grant\n\nDetailed information...",
+    "form_content": "Application requirements...",
+    "organization_id": "abc123-org-id",
+    "assigned_to": "user-uuid-123",
+    "created_at": "2024-01-15T10:30:00Z",
+    "updated_at": "2024-02-01T08:15:00Z"
+  }
+}
+```
+</ResponseExample>
+
+<ResponseExample>
+```json Not Found
+{
+  "success": false,
+  "error": "Opportunity not found"
+}
+```
+</ResponseExample>
+
+## Path parameter
+
+The `id` parameter must be a valid UUID for an opportunity that belongs to your organization.
+
+<Warning>
+You can only access opportunities that belong to your organization. Attempting to access another organization's opportunities will return a 404 error.
+</Warning>

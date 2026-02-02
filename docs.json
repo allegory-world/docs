@@ -50,12 +50,33 @@
               "api-reference/grant-history/get-grant-history-for-a-funder",
               "api-reference/grant-history/search-all-grant-history"
             ]
+          },
+          {
+            "group": "Funding Opportunities",
+            "pages": [
+              "api-reference/opportunities/list-opportunities",
+              "api-reference/opportunities/create-opportunity",
+              "api-reference/opportunities/get-opportunity",
+              "api-reference/opportunities/update-opportunity",
+              "api-reference/opportunities/lookup-opportunity"
+            ]
           }
         ]
       }
     ]
   },
   "logo": "/images/3245ed16-f691-4628-8f7d-c97c2ddd3972.png",
+  "openapi": "api-reference/openapi.yaml",
+  "api": {
+    "baseUrl": "https://allegory-middleware.ray-392.workers.dev",
+    "auth": {
+      "method": "key",
+      "name": "X-API-Key"
+    },
+    "playground": {
+      "display": "interactive"
+    }
+  },
   "navbar": {
     "links": [
       {
@@ -80,17 +101,6 @@
     "socials": {
       "x": "https://x.com/allegory_world",
       "linkedin": "https://www.linkedin.com/company/107962524"
-    }
-  },
-  "openapi": "api-reference/openapi.yaml",
-  "api": {
-    "baseUrl": "https://allegory-middleware.ray-392.workers.dev",
-    "auth": {
-      "method": "key",
-      "name": "X-API-Key"
-    },
-    "playground": {
-      "display": "interactive"
     }
   },
   "appearance": {

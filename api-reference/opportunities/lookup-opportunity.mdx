@@ -1,0 +1,99 @@
+---
+openapi: GET /v1/opportunities/lookup
+---
+
+Lookup and optionally update a funding opportunity using the donor name and program name as identifiers instead of the UUID.
+
+## Use cases
+
+- Find opportunities without knowing the UUID
+- Check if an opportunity already exists before creating
+- Update opportunities using natural identifiers
+- Integrate with external systems that track by name
+
+## Lookup operation (GET)
+
+Search for an opportunity using exact donor and program name matches.
+
+<RequestExample>
+```bash cURL - Lookup
+curl -X GET 'https://allegory-middleware.ray-392.workers.dev/v1/opportunities/lookup?donor=Example%20Foundation&program_name=Climate%20Action%20Grant' \
+  -H 'X-API-Key: YOUR_API_KEY' \
+  -H 'Accept: application/json'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Success Response
+{
+  "success": true,
+  "data": {
+    "id": "7f3d9c1a-4b8e-4a2d-9f1c-8e6b5a3c2d1e",
+    "Donor": "Example Foundation",
+    "program_name": "Climate Action Grant",
+    "description": "Grants for climate change initiatives",
+    "funding_amount": 100000,
+    "funding_type": "private",
+    "status": "active",
+    "deadline": "2024-12-31T23:59:59Z",
+    "country": "United States",
+    "currency": "USD",
+    "created_at": "2024-01-15T10:30:00Z",
+    "updated_at": "2024-02-01T08:15:00Z"
+  }
+}
+```
+</ResponseExample>
+
+## Update by lookup (PUT)
+
+Update an opportunity using donor and program name as the identifier.
+
+<RequestExample>
+```bash cURL - Update by Lookup
+curl -X PUT 'https://allegory-middleware.ray-392.workers.dev/v1/opportunities/lookup?donor=Example%20Foundation&program_name=Climate%20Action%20Grant' \
+  -H 'X-API-Key: YOUR_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "status": "submitted",
+    "deadline": "2025-01-15T23:59:59Z"
+  }'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Success Response
+{
+  "success": true,
+  "data": {
+    "id": "7f3d9c1a-4b8e-4a2d-9f1c-8e6b5a3c2d1e",
+    "Donor": "Example Foundation",
+    "program_name": "Climate Action Grant",
+    "status": "submitted",
+    "deadline": "2025-01-15T23:59:59Z",
+    "updated_at": "2024-02-03T16:45:00Z"
+  }
+}
+```
+</ResponseExample>
+
+## Query parameters
+
+Both `donor` and `program_name` are **required** and must be **exact matches** (case-sensitive).
+
+<Warning>
+The lookup uses exact string matching. Make sure your donor and program_name values match exactly, including capitalization and spacing.
+</Warning>
+
+## When to use lookup vs UUID
+
+| Use Case | Method |
+|----------|--------|
+| You have the opportunity ID | Use `/v1/opportunities/{id}` |
+| You know donor and program names | Use `/v1/opportunities/lookup` |
+| Checking if opportunity exists | Use `/v1/opportunities/lookup` (GET) |
+| Bulk imports/updates by name | Use `/v1/opportunities/lookup` (PUT) |
+
+<Tip>
+The lookup endpoint is particularly useful for integrations where you're syncing opportunities from external systems that don't store Allegory UUIDs.
+</Tip>
