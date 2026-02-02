@@ -84,7 +84,11 @@
   },
   "openapi": "api-reference/openapi.yaml",
   "api": {
-    "baseUrl": "https://allegory-middleware.workers.dev",
+    "baseUrl": "https://allegory-middleware.ray-392.workers.dev",
+    "auth": {
+      "method": "key",
+      "name": "X-API-Key"
+    },
     "playground": {
       "display": "interactive"
     }

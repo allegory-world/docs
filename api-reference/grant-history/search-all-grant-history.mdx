@@ -30,7 +30,8 @@ Combine `funder_ein` and `recipient_ein` to find specific grant relationships be
 <RequestExample>
 ```bash cURL
 # Find all grants to a specific organization
-curl -X GET 'https://allegory-middleware.workers.dev/v1/history?recipient_ein=123456789&limit=100' \
+curl -X GET 'https://allegory-middleware.ray-392.workers.dev/v1/history?recipient_ein=123456789&limit=100' \
+  -H 'X-API-Key: YOUR_API_KEY' \
   -H 'Accept: application/json'
 ```
 </RequestExample>
@@ -38,7 +39,8 @@ curl -X GET 'https://allegory-middleware.workers.dev/v1/history?recipient_ein=12
 <RequestExample>
 ```bash cURL
 # Find large grants in 2022
-curl -X GET 'https://allegory-middleware.workers.dev/v1/history?transaction_year=2022&min_amount=50000&limit=100' \
+curl -X GET 'https://allegory-middleware.ray-392.workers.dev/v1/history?transaction_year=2022&min_amount=50000&limit=100' \
+  -H 'X-API-Key: YOUR_API_KEY' \
   -H 'Accept: application/json'
 ```
 </RequestExample>

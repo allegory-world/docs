@@ -20,7 +20,8 @@ Grant history data is extracted from IRS Form 990 filings, which nonprofits are 
 
 <RequestExample>
 ```bash cURL
-curl -X GET 'https://allegory-middleware.workers.dev/v1/funders/131635294/history?limit=100&offset=0' \
+curl -X GET 'https://allegory-middleware.ray-392.workers.dev/v1/funders/131635294/history?limit=100&offset=0' \
+  -H 'X-API-Key: YOUR_API_KEY' \
   -H 'Accept: application/json'
 ```
 </RequestExample>

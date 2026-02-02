@@ -1,28 +1,36 @@
-openapi: 3.1.0
+openapi: 3.0.3
 info:
   title: Allegory Funders API
-  version: 1.0.0
+  version: "1.0.0"
   description: |
-    Public API for searching nonprofit funders and grant history data.
+    API for searching nonprofit funders and grant history data.
     
     This API provides fast, edge-cached access to nonprofit funder information
     and their grant-making history from IRS 990 filings.
     
-    **Base URL:** `https://allegory-middleware.workers.dev`
+    **Base URL:** `https://allegory-middleware.ray-392.workers.dev`
     
-    **Rate Limits:** 100 requests per minute per IP address
+    **Authentication:** All requests require an API key passed via the `X-API-Key` header.
+    
+    **Rate Limits:** 100 requests per minute per API key
     
     **Data Freshness:** Data is synced daily from our analytics warehouse at 4am UTC
+    
+    **Get an API Key:** Contact hello@allegory.world to request your API key.
   contact:
     name: Allegory API Support
+    email: hello@allegory.world
     url: https://allegory.dev
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
 
 servers:
-  - url: https://allegory-middleware.workers.dev
+  - url: https://allegory-middleware.ray-392.workers.dev
     description: Production server
+
+security:
+  - ApiKeyAuth: []
 
 tags:
   - name: Funders
@@ -523,13 +531,8 @@ components:
                 example: An unexpected error occurred
 
   securitySchemes:
-    apiKey:
+    ApiKeyAuth:
       type: apiKey
       in: header
       name: X-API-Key
-      description: |
-        API key for authentication (optional for public endpoints, required for write operations).
-        
-        Contact support to obtain an API key for higher rate limits.
-
-security: []
+      description: API key for authentication. Contact hello@allegory.world to obtain your key.

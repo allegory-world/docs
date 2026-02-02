@@ -15,7 +15,8 @@ Search nonprofit funders with filters and pagination. This endpoint provides acc
 
 <RequestExample>
 ```bash cURL
-curl -X GET 'https://allegory-middleware.workers.dev/v1/funders?name=American Red Cross&limit=20' \
+curl -X GET 'https://allegory-middleware.ray-392.workers.dev/v1/funders?name=American Red Cross&limit=20' \
+  -H 'X-API-Key: YOUR_API_KEY' \
   -H 'Accept: application/json'
 ```
 </RequestExample>

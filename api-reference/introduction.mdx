@@ -10,30 +10,36 @@ Welcome to the Allegory Funders API documentation. This API provides fast, edge-
 All API requests should be made to:
 
 ```
-https://allegory-middleware.workers.dev
+https://allegory-middleware.ray-392.workers.dev
 ```
-
-## Rate Limits
-
-The API has a rate limit of **100 requests per minute** per IP address.
-
-## Data Freshness
-
-Data is synced daily from our analytics warehouse at **4am UTC**.
 
 ## Authentication
 
-<Info>
-API key authentication is optional for public endpoints but required for write operations and higher rate limits.
-</Info>
+<Warning>
+All API requests require authentication via an API key.
+</Warning>
 
-To use API key authentication, include your API key in the request header:
+Include your API key in the request header:
 
 ```
-X-API-Key: your_api_key_here
+X-API-Key: ak_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-Contact [Allegory API Support](https://allegory.dev) to obtain an API key.
+### Getting an API Key
+
+Contact us at **hello@allegory.world** to request your API key. Keys are issued in the format `ak_xxxxx...`.
+
+<Tip>
+Never expose your API key in client-side code or commit it to version control. Store it securely as an environment variable.
+</Tip>
+
+## Rate Limits
+
+The API has a rate limit of **100 requests per minute** per API key.
+
+## Data Freshness
+
+Data is synced daily from our analytics warehouse at **4am UTC**. New IRS 990 filings are typically available within 24-48 hours of being filed.
 
 ## Response Format
 
@@ -54,12 +60,16 @@ All API responses follow a consistent format:
 ## Getting Started
 
 <Steps>
+<Step title="Get your API key">
+  Contact hello@allegory.world to request your API key.
+</Step>
+
 <Step title="Explore the API endpoints">
   Browse the endpoints in the sidebar to see available operations for searching funders and accessing grant history.
 </Step>
 
 <Step title="Try the API playground">
-  Use the interactive API playground on each endpoint page to test requests directly from your browser.
+  Use the interactive API playground on each endpoint page to test requests directly from your browser with your API key.
 </Step>
 
 <Step title="Review the data models">
@@ -67,6 +77,16 @@ All API responses follow a consistent format:
 </Step>
 </Steps>
 
+## Quick Example
+
+Here's a simple example to get you started:
+
+```bash
+curl -X GET 'https://allegory-middleware.ray-392.workers.dev/v1/funders?limit=5' \
+  -H 'X-API-Key: YOUR_API_KEY' \
+  -H 'Accept: application/json'
+```
+
 ## Support
 
-For questions or support, contact [Allegory API Support](https://allegory.dev).
+For questions or support, contact us at **hello@allegory.world**.

@@ -20,17 +20,26 @@ Select how you want to access Allegory's funder data:
 
 Get started with the Allegory API in minutes.
 
-### 1. Make your first request
+### 1. Get your API key
 
-No authentication required! Try searching for funders:
+Contact us at **hello@allegory.world** to request your API key. You'll receive a key in the format `ak_xxxxx...`.
+
+### 2. Make your first request
+
+Use your API key in the `X-API-Key` header to search for funders:
 
 ```bash
 curl --request GET \
-  --url 'https://allegory-middleware.workers.dev/v1/funders?name=Gates&limit=5' \
+  --url 'https://allegory-middleware.ray-392.workers.dev/v1/funders?name=Gates&limit=5' \
+  --header 'X-API-Key: YOUR_API_KEY' \
   --header 'Accept: application/json'
 ```
 
-### 2. Explore the response
+<Warning>
+  Replace `YOUR_API_KEY` with your actual API key. Never commit API keys to version control!
+</Warning>
+
+### 3. Explore the response
 
 You'll receive a JSON response with funder data:
 
@@ -55,13 +64,14 @@ You'll receive a JSON response with funder data:
 }
 ```
 
-### 3. Try other endpoints
+### 4. Try other endpoints
 
 <AccordionGroup>
   <Accordion title="Get a specific funder by EIN" icon="magnifying-glass">
     ```bash
     curl --request GET \
-      --url 'https://allegory-middleware.workers.dev/v1/funders/562618866' \
+      --url 'https://allegory-middleware.ray-392.workers.dev/v1/funders/562618866' \
+      --header 'X-API-Key: YOUR_API_KEY' \
       --header 'Accept: application/json'
     ```
   </Accordion>
@@ -69,7 +79,8 @@ You'll receive a JSON response with funder data:
   <Accordion title="Search grant history" icon="list">
     ```bash
     curl --request GET \
-      --url 'https://allegory-middleware.workers.dev/v1/history?funder_name=Gates&year=2023' \
+      --url 'https://allegory-middleware.ray-392.workers.dev/v1/history?funder_name=Gates&year=2023' \
+      --header 'X-API-Key: YOUR_API_KEY' \
       --header 'Accept: application/json'
     ```
   </Accordion>
@@ -77,7 +88,8 @@ You'll receive a JSON response with funder data:
   <Accordion title="Get funder's grant history" icon="clock-rotate-left">
     ```bash
     curl --request GET \
-      --url 'https://allegory-middleware.workers.dev/v1/funders/562618866/history?limit=10' \
+      --url 'https://allegory-middleware.ray-392.workers.dev/v1/funders/562618866/history?limit=10' \
+      --header 'X-API-Key: YOUR_API_KEY' \
       --header 'Accept: application/json'
     ```
   </Accordion>
@@ -122,9 +134,10 @@ Explore the full API capabilities:
 ## Rate limits & data freshness
 
 <Info>
-  - **Rate limit:** 100 requests per minute per IP address
+  - **Rate limit:** 100 requests per minute per API key
   - **Data updates:** Daily at 4am UTC from IRS 990 filings
-  - **Base URL:** `https://allegory-middleware.workers.dev`
+  - **Base URL:** `https://allegory-middleware.ray-392.workers.dev`
+  - **Authentication:** Required via `X-API-Key` header
 </Info>
 
 ## Need help?

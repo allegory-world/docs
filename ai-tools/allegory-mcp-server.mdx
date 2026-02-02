@@ -27,7 +27,7 @@ The Model Context Protocol (MCP) is an open protocol developed by Anthropic that
 
 - Claude Desktop application
 - Node.js 18 or higher
-- An Allegory API key (contact us at hello@allegory.world)
+- An Allegory API key (required - contact us at hello@allegory.world)
 
 ### Quick Start
 
@@ -38,7 +38,14 @@ npm install -g @allegory/mcp-server
 
 ## Configuration
 
-Configuration details for integrating with Claude Desktop will be provided once the MCP server is released.
+<Note>
+The MCP server requires an Allegory API key to access the funder database. You'll configure this in your Claude Desktop settings.
+</Note>
+
+Configuration details for integrating with Claude Desktop will be provided once the MCP server is released. You'll need to provide:
+
+- Your Allegory API key (`ak_xxxxx...`)
+- Optional: Custom base URL (defaults to `https://allegory-middleware.ray-392.workers.dev`)
 
 ## Available Tools
 
@@ -97,8 +104,8 @@ Data is updated daily at 4am UTC.
 ## Rate Limits
 
 The MCP server respects the same rate limits as the Allegory API:
-- 100 requests per minute per IP address
-- Authenticated requests may have higher limits
+- 100 requests per minute per API key
+- All requests require authentication via your API key
 
 ## Support
 
