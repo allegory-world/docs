@@ -102,13 +102,15 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/allegory_world",
+      "linkedin": "https://www.linkedin.com/company/107962524"
     }
   },
   "api": {
-    "baseUrl": "https://allegory-middleware.workers.dev"
+    "baseUrl": "https://allegory-middleware.workers.dev",
+    "playground": {
+      "display": "interactive"
+    }
   },
   "appearance": {
     "strict": true,
