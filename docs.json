@@ -101,6 +101,7 @@
       "linkedin": "https://www.linkedin.com/company/107962524"
     }
   },
+  "openapi": "api-reference/openapi.yaml",
   "api": {
     "baseUrl": "https://allegory-middleware.workers.dev",
     "playground": {
