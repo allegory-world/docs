@@ -14,13 +14,13 @@ Welcome to the Allegory Funders API documentation. This API provides:
 All API requests should be made to:
 
 ```
-https://allegory-middleware.ray-392.workers.dev
+https://api.allegory.world
 ```
 
 ## Authentication
 
 <Warning>
-All API requests require authentication via an API key.
+  All API requests require authentication via an API key.
 </Warning>
 
 Include your API key in the request header:
@@ -31,10 +31,10 @@ X-API-Key: ak_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ### Getting an API Key
 
-Contact us at **hello@allegory.world** to request your API key. Keys are issued in the format `ak_xxxxx...`.
+Contact us at [**hello@allegory.world**](mailto:hello@allegory.world) to request your API key. Keys are issued in the format `ak_xxxxx...`.
 
 <Tip>
-Never expose your API key in client-side code or commit it to version control. Store it securely as an environment variable.
+  Never expose your API key in client-side code or commit it to version control. Store it securely as an environment variable.
 </Tip>
 
 ## Rate Limits
@@ -64,21 +64,18 @@ All API responses follow a consistent format:
 ## Getting Started
 
 <Steps>
-<Step title="Get your API key">
-  Contact hello@allegory.world to request your API key.
-</Step>
-
-<Step title="Explore the API endpoints">
-  Browse the endpoints in the sidebar to see available operations for searching funders and accessing grant history.
-</Step>
-
-<Step title="Try the API playground">
-  Use the interactive API playground on each endpoint page to test requests directly from your browser with your API key.
-</Step>
-
-<Step title="Review the data models">
-  Check the response schemas to understand the structure of returned data.
-</Step>
+  <Step title="Get your API key">
+    Contact [hello@allegory.world](mailto:hello@allegory.world) to request your API key.
+  </Step>
+  <Step title="Explore the API endpoints">
+    Browse the endpoints in the sidebar to see available operations for searching funders and accessing grant history.
+  </Step>
+  <Step title="Try the API playground">
+    Use the interactive API playground on each endpoint page to test requests directly from your browser with your API key.
+  </Step>
+  <Step title="Review the data models">
+    Check the response schemas to understand the structure of returned data.
+  </Step>
 </Steps>
 
 ## Quick Example
@@ -86,11 +83,11 @@ All API responses follow a consistent format:
 Here's a simple example to get you started:
 
 ```bash
-curl -X GET 'https://allegory-middleware.ray-392.workers.dev/v1/funders?limit=5' \
+curl -X GET 'https://api.allegory.world/v1/funders?limit=5' \
   -H 'X-API-Key: YOUR_API_KEY' \
   -H 'Accept: application/json'
 ```
 
 ## Support
 
-For questions or support, contact us at **hello@allegory.world**.
+For questions or support, contact us at [**hello@allegory.world**](mailto:hello@allegory.world).
