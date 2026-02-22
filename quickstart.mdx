@@ -30,7 +30,7 @@ Use your API key in the `X-API-Key` header to search for funders:
 
 ```bash
 curl --request GET \
-  --url 'https://allegory-middleware.ray-392.workers.dev/v1/funders?name=Gates&limit=5' \
+  --url 'https://api.allegory.world/v1/funders?name=Gates&limit=5' \
   --header 'X-API-Key: YOUR_API_KEY' \
   --header 'Accept: application/json'
 ```
@@ -70,7 +70,7 @@ You'll receive a JSON response with funder data:
   <Accordion title="Get a specific funder by EIN" icon="magnifying-glass">
     ```bash
     curl --request GET \
-      --url 'https://allegory-middleware.ray-392.workers.dev/v1/funders/562618866' \
+      --url 'https://api.allegory.world/v1/funders/562618866' \
       --header 'X-API-Key: YOUR_API_KEY' \
       --header 'Accept: application/json'
     ```
@@ -79,7 +79,7 @@ You'll receive a JSON response with funder data:
   <Accordion title="Search grant history" icon="list">
     ```bash
     curl --request GET \
-      --url 'https://allegory-middleware.ray-392.workers.dev/v1/history?funder_name=Gates&year=2023' \
+      --url 'https://api.allegory.world/v1/history?funder_name=Gates&year=2023' \
       --header 'X-API-Key: YOUR_API_KEY' \
       --header 'Accept: application/json'
     ```
@@ -88,7 +88,7 @@ You'll receive a JSON response with funder data:
   <Accordion title="Get funder's grant history" icon="clock-rotate-left">
     ```bash
     curl --request GET \
-      --url 'https://allegory-middleware.ray-392.workers.dev/v1/funders/562618866/history?limit=10' \
+      --url 'https://api.allegory.world/v1/funders/562618866/history?limit=10' \
       --header 'X-API-Key: YOUR_API_KEY' \
       --header 'Accept: application/json'
     ```
@@ -140,7 +140,7 @@ Explore the full API capabilities:
 <Info>
   - **Rate limit:** 100 requests per minute per API key
   - **Data updates:** Daily at 4am UTC from IRS 990 filings
-  - **Base URL:** `https://allegory-middleware.ray-392.workers.dev`
+  - **Base URL:** `https://api.allegory.world`
   - **Authentication:** Required via `X-API-Key` header
 </Info>
 

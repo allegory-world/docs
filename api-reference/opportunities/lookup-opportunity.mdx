@@ -17,7 +17,7 @@ Search for an opportunity using exact donor and program name matches.
 
 <RequestExample>
 ```bash cURL - Lookup
-curl -X GET 'https://allegory-middleware.ray-392.workers.dev/v1/opportunities/lookup?donor=Example%20Foundation&program_name=Climate%20Action%20Grant' \
+curl -X GET 'https://api.allegory.world/v1/opportunities/lookup?donor=Example%20Foundation&program_name=Climate%20Action%20Grant' \
   -H 'X-API-Key: YOUR_API_KEY' \
   -H 'Accept: application/json'
 ```
@@ -51,7 +51,7 @@ Update an opportunity using donor and program name as the identifier.
 
 <RequestExample>
 ```bash cURL - Update by Lookup
-curl -X PUT 'https://allegory-middleware.ray-392.workers.dev/v1/opportunities/lookup?donor=Example%20Foundation&program_name=Climate%20Action%20Grant' \
+curl -X PUT 'https://api.allegory.world/v1/opportunities/lookup?donor=Example%20Foundation&program_name=Climate%20Action%20Grant' \
   -H 'X-API-Key: YOUR_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{

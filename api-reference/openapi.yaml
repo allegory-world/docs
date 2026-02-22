@@ -9,7 +9,7 @@ info:
     and their grant-making history from IRS 990 filings, plus organization-scoped
     funding opportunity management.
     
-    **Base URL:** `https://allegory-middleware.ray-392.workers.dev`
+    **Base URL:** `https://api.allegory.world`
     
     **Authentication:** All requests require an API key passed via the `X-API-Key` header.
     
@@ -27,7 +27,7 @@ info:
     url: https://opensource.org/licenses/MIT
 
 servers:
-  - url: https://allegory-middleware.ray-392.workers.dev
+  - url: https://api.allegory.world
     description: Production server
 
 security:

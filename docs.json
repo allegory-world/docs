@@ -68,7 +68,7 @@
   "logo": "/images/3245ed16-f691-4628-8f7d-c97c2ddd3972.png",
   "openapi": "api-reference/openapi.yaml",
   "api": {
-    "baseUrl": "https://allegory-middleware.ray-392.workers.dev",
+    "baseUrl": "https://api.allegory.world",
     "auth": {
       "method": "key",
       "name": "X-API-Key"
