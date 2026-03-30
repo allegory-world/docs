@@ -1,0 +1,47 @@
+---
+title: "Changelog"
+description: "Product updates and announcements for the Allegory API"
+rss: true
+---
+
+<Update label="March 2026" description="Funding opportunities" tags={["API", "Opportunities"]}>
+  ## Funding opportunities endpoints
+
+  You can now create, manage, and search funding oxpportunities through the API. New endpoints include:
+
+  - `POST /v1/opportunities` to create a new opportunity
+  - `GET /v1/opportunities` to list and filter opportunities
+  - `PUT /v1/opportunities/:id` to update an existing opportunity
+  - `GET /v1/opportunities/lookup` to look up an opportunity by external reference
+
+  See the [Funding Opportunities API reference](/api-reference/opportunities/list-opportunities) for details.
+</Update>
+
+<Update label="February 2026" description="MCP server" tags={["AI tools"]}>
+  ## Allegory MCP server
+
+  Connect Claude Desktop to Allegory's funder database using the [Model Context Protocol](/ai-tools/allegory-mcp-server). Query funder data with natural language prompts like:
+
+  - "Find foundations that focus on climate change in California"
+  - "What's the Bill & Melinda Gates Foundation's giving history?"
+</Update>
+
+<Update label="January 2026" description="Grant history search" tags={["API", "Grant history"]}>
+  ## Search all grant history
+
+  A new endpoint lets you search across all grant history records without specifying a funder. Filter by funder name, year, and more with `GET /v1/history`.
+
+  See the [Grant History API reference](/api-reference/grant-history/search-all-grant-history) for details.
+</Update>
+
+<Update label="December 2025" description="Initial release" tags={["API"]}>
+  ## Allegory API launch
+
+  The Allegory Funder API is live. Search private and public funders, retrieve detailed funder profiles by EIN, and access grant history data from IRS 990 filings.
+
+  - `GET /v1/funders` to search funders by name, type, and location
+  - `GET /v1/funders/:ein` to get a funder by EIN
+  - `GET /v1/funders/:ein/history` to get grant history for a specific funder
+
+  Get started with the [Quickstart guide](/quickstart) or explore the [API reference](/api-reference/introduction).
+</Update>

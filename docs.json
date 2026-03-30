@@ -64,7 +64,15 @@
         ]
       },
       {
-        "tab": "Changelog"
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Changelog",
+            "pages": [
+              "changelog"
+            ]
+          }
+        ]
       }
     ]
   },
