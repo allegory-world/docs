@@ -62,6 +62,10 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Changelog",
+        "icon": "person-running-fast"
       }
     ]
   },
