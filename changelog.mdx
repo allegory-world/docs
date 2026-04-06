@@ -4,23 +4,16 @@ description: "Product updates and announcements for Allegory"
 rss: true
 ---
 
-<Update label="April 2026" description="Deeper funder data" tags={["Funders", "Data"]}>
-  ## Deeper funder data
+<Update label="April 2026" description="Expanded funder type support" tags={["Improvements"]}>
+  ## Expanded funder type support
 
-  We expanded the underlying funder dataset with more US funders, more government funding programs, and broader organization coverage. This gives you more complete data to work from.
+  We expanded the underlying funder dataset with more private US funders, government funding programs, and broader organization coverage including Venture Capital, Accelerators, Corporate Social Responsibility, and Donor-advised Funds. This gives you more complete data to work from.
 </Update>
 
-<Update label="April 2026" description="Smarter funder search" tags={["Search", "Scout"]}>
-  ## Stronger search intelligence
+<Update label="March 2026" description="Funding tracker endpoints" tags={["New Releases"]}>
+  ## Funding tracker endpoints
 
-  We improved how search works across funder data and integrated deeper funder search into Scout. The result is more useful discovery workflows and better research support.
-</Update>
-
-
-<Update label="March 2026" description="Funding opportunities" tags={["API", "Opportunities"]}>
-  ## Funding opportunities endpoints
-
-  You can now create, manage, and search funding opportunities through the API. New endpoints include:
+  You can now create, manage, and look up opportunities in your Allegory Funding Tracker through the API. New endpoints include:
 
   - `POST /v1/opportunities` to create a new opportunity
   - `GET /v1/opportunities` to list and filter opportunities
@@ -30,53 +23,13 @@ rss: true
   See the [Funding Opportunities API reference](/api-reference/opportunities/list-opportunities) for details.
 </Update>
 
-<Update label="March 2026" description="Funding history improvements" tags={["Funders", "Grant history"]}>
-  ## Better funding history
-
-  We improved funding history workflows with support for manual additions and clickable recipient EINs. It's now easier to verify records and work with historical grant data.
-</Update>
-
-<Update label="March 2026" description="People view and contact enrichment" tags={["Funders", "People"]}>
-  ## Smarter funder profiles
-
-  We launched a new People view for funders and improved contact enrichment so it's easier to identify the right people behind each organization. We also added better support for non-EIN organizations.
-</Update>
-
-<Update label="March 2026" description="Funders in Funding Tracker" tags={["Funding Tracker", "Funders"]}>
+<Update label="March 2026" description="Funders in Funding Tracker" tags={["Improvements"]}>
   ## Funders in the Funding Tracker
 
   You can now track your best-fit funders directly in the Funding Tracker. Add funders to your pipeline, record notes, and monitor them for new opportunities — all in one place.
 </Update>
 
-<Update label="February 2026" description="MCP server" tags={["AI tools"]}>
-  ## Allegory MCP server
-
-  Connect Claude Desktop to Allegory's funder database using the [Model Context Protocol](/ai-tools/allegory-mcp-server). Query funder data with natural language prompts like:
-
-  - "Find foundations that focus on climate change in California"
-  - "What's the Bill & Melinda Gates Foundation's giving history?"
-</Update>
-
-<Update label="February 2026" description="Notifications and comments" tags={["Collaboration"]}>
-  ## Expanded notifications and comments
-
-  We expanded notifications to include email alerts for comments and mentions. Collaboration is easier and important updates get seen faster.
-</Update>
-
-<Update label="February 2026" description="Mobile improvements" tags={["Mobile"]}>
-  ## Smoother mobile experience
-
-  We shipped a batch of mobile-focused improvements, including responsive navigation and better post-release polish. The app is more stable and usable on smaller screens.
-</Update>
-
-<Update label="February 2026" description="Referrals and billing" tags={["Billing", "Referrals"]}>
-  ## Referrals and trials work better
-
-  We improved referral and billing flows with better coupon handling, referral tracking, and support for free trials without requiring billing details up front. This reduces friction in signup and partner-led growth.
-</Update>
-
-
-<Update label="January 2026" description="Grant history search" tags={["API", "Grant history"]}>
+<Update label="March 2026" description="Grant history search" tags={["Improvements"]}>
   ## Search all grant history
 
   A new endpoint lets you search across all grant history records without specifying a funder. Filter by funder name, year, and more with `GET /v1/history`.
@@ -84,14 +37,30 @@ rss: true
   See the [Grant History API reference](/api-reference/grant-history/search-all-grant-history) for details.
 </Update>
 
-<Update label="January 2026" description="Funder profiles" tags={["Funders"]}>
-  ## Funder profiles
+<Update label="February 2026" description="Funder profiles" tags={["New Releases"]}>
+  ## Funder profiles in Allegory
 
-  We launched funder profiles, giving you a dedicated place to review key organization information. Profiles serve as the foundation for people, history, and search workflows across Allegory.
+  We launched funder profiles, giving you a dedicated place to review and work with funder information across three areas:
+
+  - **Profile** — Key organization information in one place
+  - **People** — A new People view with improved contact enrichment to help you identify the right contacts behind each organization
+  - **History** — Funding history with support for manual additions and clickable recipient EINs, making it easier to verify records and work with historical grant data
+
 </Update>
 
+<Update label="February 2026" description="Charity Navigator integration" tags={["New Releases"]}>
+  ## Charity Navigator integration
 
-<Update label="December 2025" description="Initial release" tags={["API"]}>
+  Announcing our first third-party integration — [Charity Navigator](https://www.charitynavigator.org/). Gain access to trusted insights on US-based foundations and nonprofits via Charity Navigator profiles, directly from within Allegory.
+</Update>
+
+<Update label="February 2026" description="Refer a friend" tags={["Improvements"]}>
+  ## Refer a friend to Allegory
+
+  It's easier than ever to start funding your mission — kick off a free trial of Allegory today, no credit card required. Take it a step further and refer a friend to fund their mission too. You get 1 free month for each successful referral, capped at 12 referrals.
+</Update>
+
+<Update label="February 2026" description="Initial API release" tags={["New Releases"]}>
   ## Allegory API launch
 
   The Allegory Funder API is live. Search private and public funders, retrieve detailed funder profiles by EIN, and access grant history data from IRS 990 filings.
@@ -101,4 +70,16 @@ rss: true
   - `GET /v1/funders/:ein/history` to get grant history for a specific funder
 
   Get started with the [Quickstart guide](/quickstart) or explore the [API reference](/api-reference/introduction).
+</Update>
+
+<Update label="January 2026" description="Notifications and comments" tags={["Improvements"]}>
+  ## Expanded notifications and comments
+
+  We expanded notifications to include email alerts for comments and mentions. Collaboration is easier and important updates get seen faster.
+</Update>
+
+<Update label="December 2025" description="Mobile improvements" tags={["Improvements"]}>
+  ## Smoother mobile experience
+
+  We shipped a batch of mobile-focused improvements, including responsive navigation and better post-release polish. The app is more stable and usable on smaller screens.
 </Update>
