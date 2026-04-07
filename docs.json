@@ -11,19 +11,113 @@
   "navigation": {
     "tabs": [
       {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get started",
+            "icon": "rocket",
+            "pages": [
+              "get-started/introduction",
+              "get-started/quickstart",
+              "get-started/ai-native"
+            ]
+          },
+          {
+            "group": "Account",
+            "icon": "circle-user",
+            "pages": [
+              "account/profile",
+              "account/notifications",
+              "account/security-access"
+            ]
+          },
+          {
+            "group": "Funders",
+            "icon": "landmark",
+            "pages": [
+              "funders/funder-profiles",
+              "funders/opportunities",
+              "funders/people",
+              "funders/funding-history"
+            ]
+          },
+          {
+            "group": "Funding Tracker",
+            "icon": "clipboard-list",
+            "pages": [
+              "funding-tracker/funding-opportunities",
+              "funding-tracker/funders",
+              "funding-tracker/application-forms",
+              "funding-tracker/proposals"
+            ]
+          },
+          {
+            "group": "Scout",
+            "icon": "compass",
+            "pages": [
+              "scout/ask",
+              "scout/search",
+              "scout/writing"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "icon": "plug",
+            "pages": [
+              "integrations/document-storage",
+              "integrations/api"
+            ]
+          },
+          {
+            "group": "Documents",
+            "icon": "file-lines",
+            "pages": [
+              "documents/managing-documents"
+            ]
+          },
+          {
+            "group": "Blocks",
+            "icon": "th-large",
+            "pages": [
+              "blocks/import-block",
+              "blocks/create-from-scratch"
+            ]
+          },
+          {
+            "group": "Settings",
+            "icon": "sliders",
+            "pages": [
+              "settings/organization",
+              "settings/members-teams",
+              "settings/billing"
+            ]
+          },
+          {
+            "group": "Teams",
+            "icon": "users",
+            "pages": [
+              "teams/team-documents",
+              "teams/team-funding-tracker"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Guides",
         "groups": [
           {
             "group": "Getting started",
+            "icon": "rocket",
             "pages": [
-              "index",
-              "quickstart"
+              "guides/introduction",
+              "guides/quickstart"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "AI",
+            "icon": "robot",
             "pages": [
-              "ai-tools/allegory-mcp-server"
+              "guides/allegory-mcp-server"
             ]
           }
         ]
@@ -33,12 +127,14 @@
         "groups": [
           {
             "group": "API documentation",
+            "icon": "book-open",
             "pages": [
               "api-reference/introduction"
             ]
           },
           {
             "group": "Funders",
+            "icon": "landmark",
             "pages": [
               "api-reference/funders/search-funders",
               "api-reference/funders/get-a-funder-by-ein"
@@ -46,6 +142,7 @@
           },
           {
             "group": "Grant History",
+            "icon": "clock-rotate-left",
             "pages": [
               "api-reference/grant-history/get-grant-history-for-a-funder",
               "api-reference/grant-history/search-all-grant-history"
@@ -53,6 +150,7 @@
           },
           {
             "group": "Funding Opportunities",
+            "icon": "briefcase",
             "pages": [
               "api-reference/opportunities/list-opportunities",
               "api-reference/opportunities/create-opportunity",
@@ -115,6 +213,10 @@
       "linkedin": "https://www.linkedin.com/company/107962524"
     }
   },
+  "redirects": [
+    { "source": "/quickstart", "destination": "/guides/quickstart" },
+    { "source": "/ai-tools/allegory-mcp-server", "destination": "/guides/allegory-mcp-server" }
+  ],
   "appearance": {
     "strict": true,
     "default": "light"
