@@ -1,0 +1,41 @@
+---
+openapi: PUT /v1/opportunities/lookup
+---
+
+Update an existing funding opportunity using the Donor name and program_name as a composite key. This is useful when you know the donor and program name but not the opportunity UUID.
+
+## Examples
+
+<RequestExample>
+```bash cURL
+curl -X PUT 'https://api.allegory.world/v1/opportunities/lookup?donor=Ford%20Foundation&program_name=Climate%20Grant' \
+  -H 'X-API-Key: YOUR_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "status": "in_progress",
+    "funding_amount": 75000
+  }'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Success Response
+{
+  "success": true,
+  "data": {
+    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "Donor": "Ford Foundation",
+    "program_name": "Climate Grant",
+    "status": "in_progress",
+    "funding_amount": 75000,
+    "funding_type": "private",
+    "created_at": "2024-06-01T12:00:00Z",
+    "updated_at": "2024-06-15T09:30:00Z"
+  }
+}
+```
+</ResponseExample>
+
+<Tip>
+Both `donor` and `program_name` query parameters are required and must match exactly. Use the [lookup endpoint](/api-reference/opportunities/lookup-opportunity) first to verify the opportunity exists before updating.
+</Tip>

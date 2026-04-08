@@ -1,114 +1,153 @@
 ---
-title: "Allegory MCP Server"
-description: "Connect Claude Desktop to Allegory's funder database using the Model Context Protocol"
+title: "Allegory MCP server"
+description: "Connect AI assistants to Allegory's funder database and funding opportunities using the Model Context Protocol"
 ---
 
-## Overview
-
-The Allegory MCP (Model Context Protocol) Server enables Claude Desktop to directly access and search Allegory's nonprofit funder database. This allows Claude to answer questions about funders, grant history, and funding patterns without requiring manual API calls.
+The Allegory MCP server exposes all 15 public API endpoints as [Model Context Protocol](https://modelcontextprotocol.io/) tools, enabling LLM agents to query funder data and manage funding opportunities directly.
 
 ## What is MCP?
 
-The Model Context Protocol (MCP) is an open protocol developed by Anthropic that enables AI assistants to connect to external data sources and tools. By installing the Allegory MCP Server, you give Claude the ability to:
+The Model Context Protocol (MCP) is an open protocol that enables AI assistants to connect to external data sources and tools. By connecting to the Allegory MCP server, your AI assistant can:
 
 - Search for nonprofit funders by name, location, or focus area
-- Retrieve detailed funder information
+- Retrieve detailed funder information and identifiers
 - Query grant history and funding patterns
-- Analyze giving trends across multiple funders
+- Look up and manage funding opportunities
+- Access funder contacts and people data
 
-## Installation
+## Prerequisites
 
-<Note>
-  Full installation instructions coming soon. The Allegory MCP Server is currently in development.
-</Note>
+- An Allegory API key (contact [hello@allegory.world](mailto:hello@allegory.world))
+- An MCP-compatible client (Claude Desktop, Cursor, or MCP Inspector)
 
-### Prerequisites
+## Connect from Claude Desktop
 
-- Claude Desktop application
-- Node.js 18 or higher
-- An Allegory API key (required - contact us at hello@allegory.world)
+Add the following to your Claude Desktop config file (`claude_desktop_config.json`):
 
-### Quick Start
-
-```bash
-# Installation instructions will be added here
-npm install -g @allegory/mcp-server
+```json
+{
+  "mcpServers": {
+    "allegory": {
+      "url": "https://api.allegory.world/mcp",
+      "headers": {
+        "X-API-Key": "your-key-here"
+      }
+    }
+  }
+}
 ```
 
-## Configuration
+<Warning>
+Replace `your-key-here` with your actual API key. Never share your API key publicly.
+</Warning>
 
-<Note>
-The MCP server requires an Allegory API key to access the funder database. You'll configure this in your Claude Desktop settings.
-</Note>
+## Connect from Cursor
 
-Configuration details for integrating with Claude Desktop will be provided once the MCP server is released. You'll need to provide:
+Add the following to your Cursor MCP settings (`.cursor/mcp.json` in your project root):
 
-- Your Allegory API key (`ak_xxxxx...`)
-- Optional: Custom base URL (defaults to `https://api.allegory.world`)
+```json
+{
+  "mcpServers": {
+    "allegory": {
+      "url": "https://api.allegory.world/mcp",
+      "headers": {
+        "X-API-Key": "your-key-here"
+      }
+    }
+  }
+}
+```
 
-## Available Tools
+## Test with MCP Inspector
 
-The Allegory MCP Server will provide the following tools to Claude:
+You can test the MCP server using the official MCP Inspector:
 
-<AccordionGroup>
-  <Accordion title="search_funders">
-    Search for nonprofit funders with filters for name, country, type, focus areas, and verification status.
-  </Accordion>
-  
-  <Accordion title="get_funder">
-    Get detailed information about a specific funder by their EIN (Employer Identification Number).
-  </Accordion>
-  
-  <Accordion title="get_grant_history">
-    Retrieve grant-making history for a specific funder, including recipient organizations and grant amounts.
-  </Accordion>
-  
-  <Accordion title="search_all_grants">
-    Search across all grant records with filters for funder, recipient, year, purpose, and amount ranges.
-  </Accordion>
-</AccordionGroup>
+```bash
+npx @modelcontextprotocol/inspector@latest
+```
 
-## Use Cases
+Enter `https://api.allegory.world/mcp` as the server URL, add the `X-API-Key` header with your API key, and click **Connect**.
 
-### Research & Analysis
+## Authentication
 
-Ask Claude to analyze funding patterns:
+The MCP server uses the same `X-API-Key` authentication as the Allegory API. Include your API key in the headers on every MCP request.
+
+```
+X-API-Key: your-key-here
+```
+
+## Available tools
+
+The MCP server provides 15 tools split across two categories: read-only funder tools and organization-scoped opportunity tools.
+
+### Funder tools (read-only)
+
+These tools query the funder database and grant history. They are read-only and do not modify any data.
+
+| Tool | Description |
+|------|-------------|
+| `allegory_search_funders` | Search funders by name, country, type, focus areas |
+| `allegory_get_funder` | Get funder by EIN |
+| `allegory_get_funder_by_id` | Get funder by UUID (includes identifiers) |
+| `allegory_get_funder_by_identifier` | Look up by external identifier method/value |
+| `allegory_get_funder_history` | Grant history by EIN |
+| `allegory_get_funder_history_by_id` | Grant history by UUID (with filters) |
+| `allegory_get_funder_contacts` | Contacts by EIN |
+| `allegory_get_funder_contacts_by_id` | Contacts by UUID |
+| `allegory_search_grant_history` | Cross-funder grant history search |
+
+### Opportunity tools (org-scoped)
+
+These tools manage funding opportunities scoped to your organization. Write operations (create, update) modify data in your org's opportunity tracker.
+
+| Tool | Description |
+|------|-------------|
+| `allegory_list_opportunities` | List opportunities with filters |
+| `allegory_get_opportunity` | Get opportunity by ID |
+| `allegory_lookup_opportunity` | Look up by Donor + program_name |
+| `allegory_create_opportunity` | Create a new opportunity |
+| `allegory_update_opportunity` | Update opportunity by ID |
+| `allegory_update_opportunity_by_lookup` | Update by Donor + program_name |
+
+## Example prompts
+
+Once connected, you can ask your AI assistant questions like:
+
+### Research and analysis
 - "Which foundations focus on climate change in California?"
 - "What's the average grant size for education-focused funders?"
 - "Show me funders that support both arts and education"
 
-### Grant Writing
-
-Get insights for grant proposals:
+### Grant writing
 - "Find funders that have given to similar organizations"
-- "What's the typical grant range for this foundation?"
-- "When do they typically announce grants?"
+- "What's the typical grant range for the Ford Foundation?"
+- "Show me the Gates Foundation's giving history for the last 3 years"
 
-### Due Diligence
+### Opportunity management
+- "Create a new funding opportunity for the Ford Foundation's climate grant program"
+- "List all my open funding opportunities"
+- "Update the status of our Gates Foundation application to in_progress"
 
-Verify funder information:
-- "Is this foundation verified?"
+### Due diligence
+- "Is this foundation verified in Allegory?"
 - "What's their giving history over the past 5 years?"
-- "Do they fund organizations in my region?"
+- "Who are the key contacts at the MacArthur Foundation?"
 
-## Data Source
+## Rate limits
+
+The MCP server respects the same rate limits as the Allegory API: **100 requests per minute** per API key.
+
+## Data sources
 
 All data comes from the Allegory API, which aggregates information from:
-- IRS 990 filings
-- Verified nonprofit databases
-- Public funding records
-
-Data is updated daily at 4am UTC.
-
-## Rate Limits
-
-The MCP server respects the same rate limits as the Allegory API:
-- 100 requests per minute per API key
-- All requests require authentication via your API key
+- IRS 990 and 990-PF filings
+- Live web search
+- Public and private APIs
+- AI-enriched contact data
 
 ## Support
 
-For questions or issues with the Allegory MCP Server:
+For questions or issues:
 
-- Email: hello@allegory.world
-- Documentation: [API Reference](/api-reference/introduction)
+- Email: [hello@allegory.world](mailto:hello@allegory.world)
+- REST API docs: [API reference](/api-reference/introduction)

@@ -1,0 +1,58 @@
+---
+openapi: GET /v1/funders/identifier/{method}/{value}
+---
+
+Look up a funder by any external identifier, such as an EIN, charity number, or registration ID. This is useful when you have a specific identifier but don't know the funder's UUID.
+
+## Supported identifier methods
+
+| Method | Description | Example |
+|--------|-------------|---------|
+| `ein` | U.S. Employer Identification Number | `131635294` |
+| `charity_number` | UK Charity Commission number | `1068839` |
+| `registration_id` | Country-specific registration | varies |
+
+## Examples
+
+<RequestExample>
+```bash cURL
+curl -X GET 'https://api.allegory.world/v1/funders/identifier/ein/131635294' \
+  -H 'X-API-Key: YOUR_API_KEY' \
+  -H 'Accept: application/json'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Success Response
+{
+  "success": true,
+  "data": {
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "name": "American Red Cross",
+    "ein": "131635294",
+    "status": "verified",
+    "type": "foundations",
+    "country": "United States"
+  },
+  "matched_identifier": {
+    "identification_method": "ein",
+    "identification_value": "131635294"
+  },
+  "identifiers": [
+    {
+      "identification_method": "ein",
+      "identification_value": "131635294",
+      "country_code": "US",
+      "display_value": "13-1635294",
+      "is_primary": 1,
+      "is_verified": 1,
+      "status": "active"
+    }
+  ]
+}
+```
+</ResponseExample>
+
+<Tip>
+The response includes a `matched_identifier` field showing which identifier was matched, plus the full `identifiers` array for the funder. This is useful for cross-referencing funders across different identifier systems.
+</Tip>

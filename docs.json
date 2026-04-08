@@ -137,7 +137,9 @@
             "icon": "landmark",
             "pages": [
               "api-reference/funders/search-funders",
-              "api-reference/funders/get-a-funder-by-ein"
+              "api-reference/funders/get-a-funder-by-ein",
+              "api-reference/funders/get-a-funder-by-uuid",
+              "api-reference/funders/get-a-funder-by-identifier"
             ]
           },
           {
@@ -145,7 +147,16 @@
             "icon": "clock-rotate-left",
             "pages": [
               "api-reference/grant-history/get-grant-history-for-a-funder",
+              "api-reference/grant-history/get-grant-history-by-uuid",
               "api-reference/grant-history/search-all-grant-history"
+            ]
+          },
+          {
+            "group": "People",
+            "icon": "address-book",
+            "pages": [
+              "api-reference/people/get-people-by-ein",
+              "api-reference/people/get-people-by-uuid"
             ]
           },
           {
@@ -156,7 +167,8 @@
               "api-reference/opportunities/create-opportunity",
               "api-reference/opportunities/get-opportunity",
               "api-reference/opportunities/update-opportunity",
-              "api-reference/opportunities/lookup-opportunity"
+              "api-reference/opportunities/lookup-opportunity",
+              "api-reference/opportunities/update-opportunity-by-lookup"
             ]
           }
         ]

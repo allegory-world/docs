@@ -1,0 +1,52 @@
+---
+openapi: GET /v1/funders/{ein}/people
+---
+
+Retrieve contacts associated with a nonprofit funder by their EIN. Data may be sourced from regulatory filings, manual entry, or other integrations, and enriched with AI search.
+
+## Data sources
+
+Contact data comes from multiple sources:
+
+- **990**: Officers, directors, and key employees from regulatory filings
+- **manual**: Contacts added manually through the Allegory platform
+- **exa**: Contacts discovered through AI-powered web search
+
+## Examples
+
+<RequestExample>
+```bash cURL
+curl -X GET 'https://api.allegory.world/v1/funders/131635294/people?limit=50' \
+  -H 'X-API-Key: YOUR_API_KEY' \
+  -H 'Accept: application/json'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Success Response
+{
+  "success": true,
+  "data": [
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "funder_ein": "131635294",
+      "full_name": "Jane Smith",
+      "first_name": "Jane",
+      "last_name": "Smith",
+      "title": "Executive Director",
+      "email_address": null,
+      "phone_number": null,
+      "country_code": "US",
+      "bio": null,
+      "linkedin_url": "https://linkedin.com/in/janesmith",
+      "source": "990"
+    }
+  ],
+  "total": 12
+}
+```
+</ResponseExample>
+
+<Tip>
+The `source` field indicates where the contact data originated. Contacts with `source: "990"` are extracted from official regulatory records and include officers, directors, and key employees.
+</Tip>
