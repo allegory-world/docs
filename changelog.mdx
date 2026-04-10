@@ -4,16 +4,28 @@ description: "Product updates and announcements for Allegory"
 rss: true
 ---
 
+<Update label="April 2026" description="Scout 1.0" tags={["New Releases"]}>
+  ## Scout 1.0
+
+  Scout is Allegory's native AI agent, built to power your everyday grant workflows. Scout lives in your sidebar and operates across three specialised modes — [Ask](/scout/ask) for quick grant questions, [Search](/scout/search) for deep multi-source opportunity discovery, and [Writing](/scout/writing) for drafting and refining proposals grounded in your organisation's own documents.
+
+  Unlike a standard chatbot, Scout maintains state across conversations. It remembers what it has researched, which opportunities it has found, and what it is currently working on. When it discovers a new opportunity, it asks for your approval before saving it to your Funding Tracker. When it writes, it cites every source.
+
+  Alongside Scout 1.0, we've also launched a new home page in the app that puts Scout front and centre — making it the fastest way to get from zero to a funded opportunity.
+
+  Read the [Scout overview](/scout/overview) to get started.
+</Update>
+
 <Update label="April 2026" description="Expanded funder type support" tags={["Improvements"]}>
   ## Expanded funder type support
 
-  We expanded the underlying funder dataset with more private US funders, government funding programs, and broader organization coverage including Venture Capital, Accelerators, Corporate Social Responsibility, and Donor-advised Funds. This gives you more complete data to work from.
+  We expanded the underlying funder dataset with more private US funders, government funding programs, and broader organization coverage including Venture Capital, Accelerators, Corporate Social Responsibility, and Donor-advised Funds. This gives you more complete data to work from when using the [Funders Database](/funders/funder-profiles).
 </Update>
 
 <Update label="March 2026" description="Funding tracker endpoints" tags={["New Releases"]}>
   ## Funding tracker endpoints
 
-  You can now create, manage, and look up opportunities in your Allegory Funding Tracker through the API. New endpoints include:
+  You can now create, manage, and look up opportunities in your Allegory [Funding Tracker](/funding-tracker/funding-opportunities) through the API. New endpoints include:
 
   - `POST /v1/opportunities` to create a new opportunity
   - `GET /v1/opportunities` to list and filter opportunities
@@ -26,7 +38,7 @@ rss: true
 <Update label="March 2026" description="Funders in Funding Tracker" tags={["Improvements"]}>
   ## Funders in the Funding Tracker
 
-  You can now track your best-fit funders directly in the Funding Tracker. Add funders to your pipeline, record notes, and monitor them for new opportunities — all in one place.
+  You can now track your best-fit funders directly in the [Funding Tracker](/funding-tracker/funding-opportunities). Add funders to your pipeline, record notes, and monitor them for new opportunities — all in one place.
 </Update>
 
 <Update label="March 2026" description="Grant history search" tags={["Improvements"]}>
@@ -40,7 +52,7 @@ rss: true
 <Update label="February 2026" description="Funder profiles" tags={["New Releases"]}>
   ## Funder profiles in Allegory
 
-  We launched funder profiles, giving you a dedicated place to review and work with funder information across three areas:
+  We launched [funder profiles](/funders/funder-profiles), giving you a dedicated place to review and work with funder information across three areas:
 
   - **Profile** — Key organization information in one place
   - **People** — A new People view with improved contact enrichment to help you identify the right contacts behind each organization
@@ -51,13 +63,13 @@ rss: true
 <Update label="February 2026" description="Charity Navigator integration" tags={["New Releases"]}>
   ## Charity Navigator integration
 
-  Announcing our first third-party integration — [Charity Navigator](https://www.charitynavigator.org/). Gain access to trusted insights on US-based foundations and nonprofits via Charity Navigator profiles, directly from within Allegory.
+  Announcing our first third-party integration — [Charity Navigator](https://www.charitynavigator.org/). Gain access to trusted insights on US-based foundations and nonprofits via Charity Navigator profiles, directly from within Allegory. You can access these links from any [funder profile](/funders/funder-profiles).
 </Update>
 
 <Update label="February 2026" description="Refer a friend" tags={["Improvements"]}>
   ## Refer a friend to Allegory
 
-  It's easier than ever to start funding your mission — kick off a free trial of Allegory today, no credit card required. Take it a step further and refer a friend to fund their mission too. You get 1 free month for each successful referral, capped at 12 referrals.
+  It's easier than ever to start funding your mission — kick off a free trial of Allegory today, no credit card required. Take it a step further and refer a friend to fund their mission too. You get 1 free month for each successful referral, capped at 12 referrals. Manage your referral code from [Settings → Billing](/settings/billing).
 </Update>
 
 <Update label="February 2026" description="Initial API release" tags={["New Releases"]}>
@@ -69,13 +81,13 @@ rss: true
   - `GET /v1/funders/:ein` to get a funder by EIN
   - `GET /v1/funders/:ein/history` to get grant history for a specific funder
 
-  Get started with the [Quickstart guide](/quickstart) or explore the [API reference](/api-reference/introduction).
+  Generate your API key from [Account → Security & Access](/account/security-access) and explore the [API reference](/api-reference/introduction).
 </Update>
 
 <Update label="January 2026" description="Notifications and comments" tags={["Improvements"]}>
   ## Expanded notifications and comments
 
-  We expanded notifications to include email alerts for comments and mentions. Collaboration is easier and important updates get seen faster.
+  We expanded [notifications](/account/notifications) to include email alerts for comments and mentions on [proposals](/funding-tracker/funding-opportunities). Collaboration is easier and important updates get seen faster.
 </Update>
 
 <Update label="December 2025" description="Mobile improvements" tags={["Improvements"]}>

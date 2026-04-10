@@ -22,7 +22,7 @@ Get started with the Allegory API in minutes.
 
 ### 1. Get your API key
 
-Contact us at **hello@allegory.world** to request your API key. You'll receive a key in the format `ak_xxxxx...`.
+Generate your API key from [Account → Security & Access](/account/security-access). Your key will be in the format `ak_xxxxx...` — copy it immediately as it is only shown once.
 
 ### 2. Make your first request
 
@@ -46,7 +46,7 @@ You'll receive a JSON response with funder data:
 ```json
 {
   "success": true,
-  "data": [
+  "results": [
     {
       "id": "550e8400-e29b-41d4-a716-446655440000",
       "name": "Bill & Melinda Gates Foundation",
@@ -58,9 +58,8 @@ You'll receive a JSON response with funder data:
       "website_url": "https://www.gatesfoundation.org"
     }
   ],
-  "total": 1,
-  "limit": 5,
-  "offset": 0
+  "count": 1,
+  "limit": 5
 }
 ```
 

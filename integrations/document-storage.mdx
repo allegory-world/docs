@@ -1,6 +1,66 @@
 ---
 title: "Document Storage"
-description: "Connect Allegory to your document storage provider."
+description: "Connect Allegory to your existing file storage to import documents and give Scout AI the context it needs."
 ---
 
-{/* TODO: Add content */}
+Connecting a document storage integration lets you import files directly from your existing tools rather than uploading them manually. Once imported, documents appear in your [Documents](/documents/managing-documents) repository where you can manage AI Context and team assignments as normal.
+
+To connect an integration, navigate to **Settings → Integrations**.
+
+## Notion
+
+Allegory connects to Notion directly. You can set it up using either an **Internal Integration Token** (simpler, no developer setup required) or **OAuth** (for more advanced or shared configurations).
+
+### Internal Integration Token (recommended)
+
+<Steps>
+  <Step title="Create a Notion integration">
+    In Notion, go to [www.notion.so/profile/integrations](https://www.notion.so/profile/integrations) and click **New integration**. Give it a name, associate it with your workspace, and copy the **Internal Integration Token** that is generated.
+  </Step>
+  <Step title="Connect in Allegory">
+    On the Notion card in Settings → Integrations, click **Enable**. Select **Internal Integration** as the type, paste your token, and confirm.
+  </Step>
+  <Step title="Share pages with your integration">
+    Back in Notion, open each page or database you want to import. Click **⋯** → **Connect to** and select the integration you created. Notion only shares content you explicitly grant access to.
+  </Step>
+  <Step title="Select pages to import">
+    In Allegory, the page selector will open automatically after connecting. Choose the pages and databases you want to import into your Documents repository.
+  </Step>
+</Steps>
+
+### OAuth
+
+If your organisation uses OAuth-based Notion connections, click **Enable** on the Notion card, select **OAuth**, enter your Notion OAuth credentials (Client ID, Client Secret, and Redirect URI), and follow the authorisation flow.
+
+---
+
+## Google Drive, Dropbox, Box, OneDrive, and SharePoint
+
+These integrations follow the same connection flow.
+
+<Steps>
+  <Step title="Click Enable">
+    On the relevant integration card in Settings → Integrations, click **Enable**.
+  </Step>
+  <Step title="Authenticate">
+    A connection window will open. Sign in with the account you want to connect and grant the requested permissions.
+  </Step>
+  <Step title="Select files">
+    A file picker will open. Select the individual files or folders you want to import into Allegory. You can select multiple files at once.
+  </Step>
+  <Step title="Sync completes">
+    Selected files are synced to your Documents repository. This may take a moment depending on the number and size of files selected.
+  </Step>
+</Steps>
+
+### Adding more files from a connected integration
+
+Once an integration is connected, click **Configure** on its card to reopen the file picker and import additional files.
+
+### Disconnecting
+
+Click **Disconnect** on any connected integration card to remove the connection. Previously imported files remain in your Documents repository.
+
+<Note>
+  Only one cloud storage integration (Google Drive, Dropbox, Box, OneDrive, or SharePoint) can be connected at a time. Disconnect your current integration before connecting a different one. Notion can remain connected independently.
+</Note>

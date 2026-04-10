@@ -17,9 +17,7 @@
             "group": "Get started",
             "icon": "rocket",
             "pages": [
-              "get-started/introduction",
-              "get-started/quickstart",
-              "get-started/ai-native"
+              "get-started/introduction"
             ]
           },
           {
@@ -35,26 +33,21 @@
             "group": "Funders",
             "icon": "landmark",
             "pages": [
-              "funders/funder-profiles",
-              "funders/opportunities",
-              "funders/people",
-              "funders/funding-history"
+              "funders/funder-profiles"
             ]
           },
           {
             "group": "Funding Tracker",
             "icon": "clipboard-list",
             "pages": [
-              "funding-tracker/funding-opportunities",
-              "funding-tracker/funders",
-              "funding-tracker/application-forms",
-              "funding-tracker/proposals"
+              "funding-tracker/funding-opportunities"
             ]
           },
           {
             "group": "Scout",
             "icon": "compass",
             "pages": [
+              "scout/overview",
               "scout/ask",
               "scout/search",
               "scout/writing"
@@ -79,8 +72,7 @@
             "group": "Blocks",
             "icon": "th-large",
             "pages": [
-              "blocks/import-block",
-              "blocks/create-from-scratch"
+              "blocks/import-block"
             ]
           },
           {

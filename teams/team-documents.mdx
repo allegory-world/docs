@@ -1,6 +1,45 @@
 ---
 title: "Team Documents"
-description: "Manage and collaborate on documents with your team in Allegory."
+description: "Assign specific files to a team and control exactly which documents Scout AI draws from when generating proposals for that team."
 ---
 
-{/* TODO: Add content */}
+Team Documents is a focused view of your organisation's document repository that shows only the files assigned to a specific team. The key advantage is Scout AI context control: toggling **AI Context** on within a team's view applies that document's knowledge only to that team's proposals—not to the wider organisation or other teams.
+
+Access it from the left-hand sidebar under **Your teams** → expand a team → **Documents**.
+
+<Note>
+  The global Documents view (visible to Owners and Admins) shows every file uploaded by the organisation. AI Context toggled on at the organisation level applies globally. Team-level AI Context is isolated to that team.
+</Note>
+
+## Assigning a document to a team
+
+<Steps>
+  <Step title="Open the global Documents view">
+    Navigate to **Documents** in the left-hand sidebar. This is the organisation-level repository.
+  </Step>
+  <Step title="Open the actions menu">
+    Click the **⋯** menu next to the document.
+  </Step>
+  <Step title="Add to team">
+    Select **Add to Team** and choose the team from the submenu. A document can be assigned to multiple teams at the same time.
+  </Step>
+</Steps>
+
+The document will now appear in that team's Documents view.
+
+## Managing AI Context within a team
+
+Navigate to the team's Documents view and use the **AI Context** toggle next to each document to include or exclude it from Scout's knowledge base for this team's proposals. Only the documents toggled on here will be used when Scout generates content for opportunities in the team's Funding Tracker.
+
+This prevents unrelated, organisation-wide data from influencing your proposals and ensures Scout works with highly targeted, relevant information.
+
+## Removing a document from a team
+
+While in the Team Documents view, open the **⋯** menu next to the document and select **Remove from Team**. This removes it from the team's view only—the document remains in the organisation-level repository.
+
+## Organisation vs. team level
+
+| Level | What you see | AI Context scope |
+|-------|-------------|-----------------|
+| **Organisation** | Every file uploaded by the organisation | Applies to all Scout activity across the organisation |
+| **Team** | Only files assigned to that team | Applies only within that team's Funding Tracker |

@@ -1,6 +1,53 @@
 ---
 title: "Billing"
-description: "Manage your Allegory subscription and billing details."
+description: "View your current subscription, track usage against plan limits, and manage payment details through Stripe."
 ---
 
-{/* TODO: Add content */}
+The Billing tab shows your active subscription, usage against your plan's limits, and gives you access to Stripe's secure customer portal to manage payment details.
+
+## Subscription status
+
+The top section of the Billing tab shows:
+
+- **Plan name** and current status badge — one of Active, Free Trial, Paused, Past Due, Cancelled, or No Subscription
+- **Current billing period** — the start and end dates of your current cycle
+- **Payment method** — the card brand and last four digits on file
+- **Usage** — current member and team counts relative to your plan limits
+
+If you are approaching a limit, a warning banner appears with the number of slots remaining.
+
+## Managing your subscription
+
+Click **Manage Billing** to open the Stripe customer portal. From there you can:
+
+- Update your payment method or billing details
+- Download past invoices
+- Upgrade or downgrade your plan
+- Cancel your subscription
+
+Changes made in the portal take effect at the start of the next billing cycle unless otherwise noted.
+
+<Note>
+  If you don't have an active subscription yet, a **Subscribe** button will appear instead. Clicking it takes you through Stripe's checkout flow to start a new subscription.
+</Note>
+
+## Referral codes
+
+### Applying a referral code
+
+If someone shared a referral code with you, enter it in the **Referral Code** field and click **Apply**. A valid code applies a discount to your next invoice.
+
+Common errors:
+
+| Error | Meaning |
+|-------|---------|
+| Invalid referral code | The code doesn't exist or has already expired |
+| Already applied | A code has already been redeemed on this subscription |
+| Self-referral | You cannot use your own referral code |
+| No active subscription | There is no active or trial subscription to apply the code to |
+
+### Sharing your referral code
+
+Once you have made at least one payment, a referral code is generated for your organization. Share it with others—when they use it, you earn credits toward your subscription. Your referral code, the number of credits remaining, and a list of successful redemptions are displayed in the **Referral** section below the subscription card.
+
+Click the copy icon next to your code to copy it to clipboard.

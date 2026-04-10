@@ -1,6 +1,68 @@
 ---
 title: "Security & Access"
-description: "Manage your account security and access settings in Allegory."
+description: "Create and manage API keys for programmatic access to Allegory and MCP server integrations."
 ---
 
-{/* TODO: Add content */}
+The API Key section is where you generate and manage API keys. These keys authenticate requests to the Allegory API and are required to connect to the Allegory MCP server.
+
+Access this section from your [Profile](/account/profile) page.
+
+## API keys
+
+### Creating a key
+
+<Steps>
+  <Step title="Name your key">
+    Enter a descriptive name in the **Key name** field (e.g., `Production`, `MCP Server`, `CI Pipeline`) so you can identify it later.
+  </Step>
+  <Step title="Create the key">
+    Click **Create API Key** or press **Enter**. The full key is displayed once in a dialog.
+  </Step>
+  <Step title="Copy and store securely">
+    Click the copy icon to copy the key to your clipboard. Store it in a secure location such as a password manager or secrets manager.
+  </Step>
+</Steps>
+
+<Warning>
+  The full key is only shown once at creation time. After you close the dialog, only the key prefix is stored and displayed. If you lose the key, revoke it and create a new one.
+</Warning>
+
+### Your key list
+
+The API keys table shows all active keys for your account:
+
+| Column | Description |
+|--------|-------------|
+| **Name** | The label you gave the key |
+| **Key** | The key prefix (e.g., `ak_abc1••••`) — the full key is not stored |
+| **Created** | Date the key was created |
+| **Last Used** | The most recent date the key was used to authenticate a request |
+
+### Revoking a key
+
+Click **Revoke** next to any key to permanently delete it. Any application or integration using that key will lose access. This action cannot be undone.
+
+<Note>
+  Revoked keys are removed from your list within 5 minutes.
+</Note>
+
+## Using your API key
+
+### REST API
+
+Include your key in the `X-API-Key` request header for all calls to the Allegory API:
+
+```bash
+curl -X GET 'https://api.allegory.world/v1/funders' \
+  -H 'X-API-Key: YOUR_API_KEY'
+```
+
+See the [API Reference](/api-reference/introduction) for available endpoints, request formats, and response schemas.
+
+### MCP server
+
+The Allegory MCP server uses the same API key. Configure it in your MCP client by adding your key as the `ALLEGORY_API_KEY` environment variable or in your MCP server configuration. Refer to the MCP server documentation for setup instructions.
+
+<Tip>
+  Create a dedicated key for each integration or environment (e.g., one key for your MCP server, another for local development). This way you can revoke access to a single integration without affecting others.
+</Tip>

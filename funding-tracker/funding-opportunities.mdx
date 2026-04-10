@@ -1,6 +1,118 @@
 ---
-title: "Funding Opportunities"
-description: "Track and manage funding opportunities in your Allegory Funding Tracker."
+title: "Funding Tracker"
+description: "Manage your grant pipeline, funder relationships, application forms, and proposals in Allegory."
+sidebarTitle: "Funding Tracker"
 ---
 
-{/* TODO: Add content */}
+The Funding Tracker is your central workspace for managing every grant you pursue—from initial research through final submission. It includes a built-in CRM for funder relationships and a dedicated workspace for each opportunity with drafting and collaboration tools.
+
+## Funders
+
+The Funders section is a CRM for managing your relationships with the grant-making organizations in your tracker. To add a funder, click the **favourite** (heart) button on any funder found in the Allegory Funders database. Once saved, click any funder's name from your tracker to open their profile.
+
+<AccordionGroup>
+  <Accordion title="Details tab">
+    View and edit the funder's core contact information, organization background, and primary focus areas.
+  </Accordion>
+  <Accordion title="Opportunities tab">
+    Known grant opportunities from this funder, drawn from Allegory's funder database. This shows publicly available or Allegory-tracked grant programs associated with the funder, across various statuses.
+  </Accordion>
+  <Accordion title="People tab">
+    A list of key people at this funder organization, including their role or headline and a link to their LinkedIn profile where available.
+  </Accordion>
+  <Accordion title="Funding history tab">
+    An in-depth look at the funder's previous grants to other organizations and causes, based on publicly available funding data. Use this to understand their giving patterns and priorities before applying.
+  </Accordion>
+  <Accordion title="Notes tab">
+    An internal log for your team. Write and save notes about your relationship with the funder—meeting takeaways, strategic preferences, feedback on past applications, or communication guidelines.
+  </Accordion>
+</AccordionGroup>
+
+## Funding opportunities
+
+### Adding an opportunity
+
+<Steps>
+  <Step title="Open the Add Opportunity dialog">
+    From the main Funding Tracker view, click **Add Opportunity**.
+  </Step>
+  <Step title="Provide the grant details">
+    Choose one of two import methods:
+
+    - **URL:** Paste the direct link to the funder's grant announcement or application page.
+    - **PDF:** Upload a downloaded RFP or grant guidelines document (PDF, up to 50MB).
+  </Step>
+  <Step title="Review the extracted data">
+    Allegory parses the URL or document and populates the opportunity's core details and application form requirements automatically.
+  </Step>
+</Steps>
+
+### The opportunity workspace
+
+Click any opportunity to open its workspace. The workspace has three tabs.
+
+<AccordionGroup>
+  <Accordion title="Opportunity tab">
+    The administrative overview of the grant. Review and edit the following fields by clicking on any value:
+
+    | Field | Description |
+    |-------|-------------|
+    | **Description** | A summary of the grant program |
+    | **Status** | New, In Progress, In Review, Submitted, Awarded, or Declined |
+    | **Amount** | Requested or expected grant amount |
+    | **Deadline** | Submission deadline |
+    | **Assigned to** | The team member responsible for this opportunity |
+    | **Type** | Public, Private, or Other |
+    | **Country** | Geographic focus of the grant |
+    | **Source** | Link to the original grant announcement |
+  </Accordion>
+  <Accordion title="Application Form tab">
+    Displays the questions and requirements extracted from the grant announcement or PDF. If no form was imported, click **Add Application Form** to add one using a URL or PDF.
+
+    You can send form questions directly to your proposal draft:
+
+    1. Click individual questions to select them, or press **⌘A** (Mac) / **Ctrl+A** (Windows) to select all.
+    2. Click **Add N questions to proposal** to insert them into the Proposal tab.
+
+    To update the form after the funder revises their requirements, open the **Actions** menu and select **Update form**.
+  </Accordion>
+  <Accordion title="Proposal tab">
+    A real-time collaborative editor where your team writes and refines the grant application. Multiple team members can edit simultaneously, with each person's cursor visible to others in the document.
+
+    **Inline toolbar**
+
+    Highlight any text to reveal a floating toolbar with two sets of actions:
+
+    - **Formatting toolbar** — apply standard formatting, start a comment thread on the selection, turn the text into an application form question, or insert a saved content block from your library.
+    - **Scout AI toolbar** — run AI actions directly on the selected text without leaving the editor:
+
+    | Category | Actions |
+    |----------|---------|
+    | Translation | Translate to English, French, Polish, or Spanish |
+    | Edit | Make longer, Make shorter, Improve writing |
+    | Tone | Make more professional, Make more confident, Make more friendly |
+    | Collaborate | Explain |
+
+    **Comments and @ mentions**
+
+    Select any text and click the comment button in the toolbar to open a comment thread anchored to that passage. Type `@` in a comment or anywhere in the document body to mention a teammate by name. Mentioned teammates and participants in active comment threads receive an email notification with the comment content and a direct link back to the proposal.
+  </Accordion>
+</AccordionGroup>
+
+## Scout AI
+
+Scout AI is available on every funding opportunity. Click the purple **Scout AI** button in the top-right corner of the workspace to open the assistant in the right sidebar.
+
+Scout can help you:
+
+- Generate proposal drafts based on the opportunity details and your organization's documents
+- Answer questions about the application form requirements
+- Add form questions to your proposal
+- Update or expand existing sections of your draft
+- Translate content or adjust the tone of your submission
+
+Each conversation is saved to the opportunity and accessible from **AI Chat History** in the sidebar. You can start new conversations or return to previous ones at any time.
+
+<Tip>
+  On mobile, the Scout AI assistant opens as a bottom sheet rather than a sidebar panel.
+</Tip>

@@ -1,6 +1,64 @@
 ---
-title: "Managing Documents"
-description: "Upload, organize, and work with documents in Allegory."
+title: "Documents"
+description: "Build your organization's knowledge repository and control which files Scout AI uses when drafting proposals."
 ---
 
-{/* TODO: Add content */}
+The Documents section is your organization's central repository. Files stored here give Scout AI the context it needs to draft accurate, relevant proposals—pulling from your mission statements, past project reports, budgets, or any other material that reflects your work.
+
+## Adding documents
+
+### Upload from your computer
+
+Click **+ Add Document** in the top-right corner, then click **Select File** to choose a file from your computer.
+
+Supported formats:
+
+| Format | Extension |
+|--------|-----------|
+| PDF | `.pdf` |
+| Word | `.docx` |
+| PowerPoint | `.pptx` |
+| Images | `.png`, `.jpg` / `.jpeg` |
+
+### Import from a storage integration
+
+You can import files directly from your connected cloud storage. Connect your storage provider in **Settings → Integrations**, then files imported from those sources will appear alongside your uploaded documents.
+
+Supported integrations:
+
+- **Notion** — imports pages and databases
+- **Google Drive**
+- **Dropbox**
+- **Box**
+- **OneDrive**
+- **SharePoint**
+
+<Note>
+  Google Drive, Dropbox, Box, OneDrive, and SharePoint connect via Merge. Notion uses a direct integration. See [Document Storage](/integrations/document-storage) for setup instructions.
+</Note>
+
+## Organizing with tags
+
+You can add tags during the upload process to keep your repository organized as it grows.
+
+1. In the upload drawer, type a keyword in the **Tags** field (e.g., `Mission Statement`, `Budget`, `Annual Report`).
+2. Click **Add** or press **Enter** to apply the tag.
+3. Add as many tags as needed before uploading.
+
+To edit tags after upload, open the **⋯** menu next to any document and select **Edit Tags**.
+
+## AI Context
+
+The **AI Context** column contains a toggle for each document. When enabled, Scout AI will draw on that document's content when generating proposal drafts for any opportunity.
+
+Toggle documents on or off at any time to control exactly what context Scout AI uses. For example, you might enable your organization's impact report and latest budget before drafting a specific grant, and disable documents that are no longer current.
+
+## Document actions
+
+From the **⋯** menu next to any document you can:
+
+- **Preview** — view the document inline
+- **Download** — save a copy to your computer (not available for Notion imports)
+- **Edit Tags** — update or remove tags
+- **Add to Team** — share the document with one or more of your teams
+- **Delete Document** — permanently remove the document from your repository

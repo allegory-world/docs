@@ -1,6 +1,32 @@
 ---
 title: "API"
-description: "Integrate with Allegory using the API."
+description: "Access Allegory programmatically to search funders, retrieve grant history, and manage funding opportunities."
 ---
 
-{/* TODO: Add content */}
+The Allegory API gives you programmatic access to the same funder data, grant history, and opportunity management tools available in the product.
+
+## What you can do
+
+- **Search funders** — query Allegory's database of tens of thousands of grant-making organisations by keyword, geography, or sector
+- **Retrieve grant history** — access historical funding data to understand a funder's giving patterns
+- **Manage funding opportunities** — create, update, and retrieve the opportunities in your organisation's tracker
+
+## Getting started
+
+<CardGroup cols={2}>
+  <Card title="API Reference" icon="book-open" href="/api-reference/introduction">
+    Full endpoint documentation, request formats, response schemas, and an interactive playground
+  </Card>
+  <Card title="MCP Server" icon="plug" href="/guides/allegory-mcp-server">
+    Connect Allegory to AI tools like Cursor and Claude using the Model Context Protocol
+  </Card>
+</CardGroup>
+
+## Authentication
+
+All API requests require an API key passed in the `X-API-Key` header. Generate and manage your keys from [Account → Security & Access](/account/security-access).
+
+```bash
+curl -X GET 'https://api.allegory.world/v1/funders' \
+  -H 'X-API-Key: YOUR_API_KEY'
+```

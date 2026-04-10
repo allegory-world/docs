@@ -1,6 +1,34 @@
 ---
 title: "Organization"
-description: "Configure your organization settings in Allegory."
+description: "Configure your organization's core profile to help Scout AI find and prioritize the most relevant funding opportunities."
 ---
 
-{/* TODO: Add content */}
+The Organization settings establish your organization's identity in Allegory. These details directly influence how Scout AI searches for opportunities and filters results—setting them accurately ensures you see the grants most relevant to your work.
+
+Only members with an **Owner** or **Admin** role can edit these settings.
+
+## Fields
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Name** | Yes | Your organization or team name |
+| **Website URL** | No | Your organization's public website |
+| **Organization Currency** | Yes | Default currency for funding amounts |
+| **Minimum Funding Amount** | No | Hide grants below this threshold |
+| **Geographic Focus** | Yes | The regions your work targets |
+| **Primary Industry** | Yes | The main sector you operate in (e.g., NGO, Healthcare, Technology) |
+| **Focus Areas** | Yes | The specific causes or themes your organization addresses |
+
+## Geographic Focus and Focus Areas
+
+Both fields use a multi-select picker with a built-in search. If your specific value isn't in the list, type it in the search box and click **Add "[value]"** to create a custom entry.
+
+Focus Areas includes options such as Education, Healthcare, Climate & Environment, Food Security, Human Rights, Gender Equality, Mental Health, Arts & Culture, and more. You can apply as many as are relevant to your work.
+
+## Saving changes
+
+A **Save Changes** button appears at the bottom of the form whenever you modify a field. Click it to apply updates, or **Reset** to discard your changes and revert to the last saved values.
+
+<Note>
+  Changes to Geographic Focus and Focus Areas take effect the next time Scout AI runs a search or funding alert for your organization.
+</Note>
